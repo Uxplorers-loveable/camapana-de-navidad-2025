@@ -15,6 +15,7 @@ const CreateGift = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(-1); // -1 = info screen, 0+ = form steps
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     phone: "",
     dataConsent: false,
@@ -59,7 +60,7 @@ const CreateGift = () => {
   const validateCurrentStep = () => {
     switch (currentStep) {
       case 0:
-        if (!formData.email || !formData.phone || !formData.dataConsent) {
+        if (!formData.name || !formData.email || !formData.phone || !formData.dataConsent) {
           toast.error("Por favor completa todos los campos y acepta el tratamiento de datos");
           return false;
         }
@@ -107,9 +108,9 @@ const CreateGift = () => {
           </Button>
 
           <div className="text-center mb-12 animate-fade-in">
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
               ¿Cómo funciona tu Smart Gift?
-            </h1>
+            </h2>
             <p className="text-lg text-muted-foreground">
               Sigue estos pasos para crear un regalo que crece con el tiempo
             </p>
@@ -118,18 +119,18 @@ const CreateGift = () => {
           <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 md:p-12 mb-8 animate-fade-in">
             <div className="space-y-8">
               {[
-                { title: "Crea tu gift card personalizada", desc: "Elige el diseño, monto y mensaje perfecto" },
-                { title: "Elige cuándo y cómo será entregada", desc: "Programa la fecha y selecciona el método de envío" },
-                { title: "La persona que la reciba podrá activarla en 30 días", desc: "Tu destinatario tendrá tiempo para activar su regalo" },
-                { title: "Skandia la guiará para seleccionar su producto de inversión", desc: "Un asesor especializado ayudará a elegir la mejor opción" },
-                { title: "Te notificaremos para que realices el pago", desc: "Recibirás instrucciones para completar tu Smart Gift" }
+                { num: "1", title: "Crea tu gift card personalizada", desc: "Elige el diseño, monto y mensaje perfecto" },
+                { num: "2", title: "Elige cuándo y cómo será entregada", desc: "Programa la fecha y selecciona el método de envío" },
+                { num: "3", title: "La persona que la reciba podrá activarla en 30 días", desc: "Tu destinatario tendrá tiempo para activar su regalo" },
+                { num: "4", title: "Skandia la guiará para seleccionar su producto de inversión", desc: "Un asesor especializado le ayudará a elegir la mejor opción" },
+                { num: "5", title: "Te notificaremos para que realices el pago", desc: "Cuando el destinatario active su inversión, recibirás las instrucciones para hacer el pago." }
               ].map((step, index) => (
                 <div key={index} className="flex gap-4 items-start">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-                    {index + 1}
+                    {step.num}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-1">{step.title}</h3>
+                    <h3 className="font-bold text-lg mb-1">{step.title}</h3>
                     <p className="text-muted-foreground">{step.desc}</p>
                   </div>
                 </div>
@@ -172,19 +173,15 @@ const CreateGift = () => {
             <div className="space-y-4 text-lg">
               <p className="flex items-start gap-3">
                 <span className="text-2xl">📧</span>
-                <span>El destinatario recibirá tu regalo en la fecha y hora que seleccionaste.</span>
+                <span><strong>{formData.to}</strong> recibirá tu regalo en la fecha y hora que seleccionaste.</span>
               </p>
               <p className="flex items-start gap-3">
                 <span className="text-2xl">⏰</span>
-                <span>Tendrá 30 días para activarlo y elegir su inversión.</span>
+                <span>Tendrá 30 días para activar su Smart Gift.</span>
               </p>
               <p className="flex items-start gap-3">
                 <span className="text-2xl">🔔</span>
-                <span>Cuando lo active, recibirás una notificación para completar el pago.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <span className="text-2xl">📊</span>
-                <span>Ambos podrán hacer seguimiento a su progreso desde Skandia.</span>
+                <span>Luego de que <strong>{formData.to}</strong> reciba su asesoría y active su producto de inversión, recibirás una notificación para completar el pago.</span>
               </p>
             </div>
           </div>
@@ -204,6 +201,7 @@ const CreateGift = () => {
               onClick={() => {
                 setCurrentStep(-1);
                 setFormData({
+                  name: "",
                   email: "",
                   phone: "",
                   dataConsent: false,
@@ -340,6 +338,16 @@ const CreateGift = () => {
                   </p>
                 </div>
                 <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="name">Nombre completo</Label>
+                    <Input
+                      id="name"
+                      type="text"
+                      placeholder="Tu nombre completo"
+                      value={formData.name}
+                      onChange={(e) => updateFormData("name", e.target.value)}
+                    />
+                  </div>
                   <div>
                     <Label htmlFor="email">Correo electrónico</Label>
                     <Input

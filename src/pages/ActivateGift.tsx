@@ -73,27 +73,27 @@ const ActivateGift = () => {
     return (
       <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-16">
         <div className="container mx-auto px-4 max-w-3xl">
-          <div className="space-y-8 animate-fade-in text-center">
+          <div className="space-y-8 text-center">
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-bold">
+              <h1 className="text-4xl md:text-5xl font-bold animate-fade-in">
                 🎁 ¡Has recibido un Smart Gift!
               </h1>
-              <p className="text-2xl text-muted-foreground">
+              <p className="text-2xl text-muted-foreground animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 Papá Noel y tus seres queridos creen en tu futuro.
               </p>
             </div>
 
             <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 md:p-12 space-y-6 text-left">
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 Esta Navidad, el mejor CEO del mundo y Skandia crearon regalos que crecen contigo.
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed animate-fade-in" style={{ animationDelay: '0.6s' }}>
                 Esta Smart Gift es más que una tarjeta: <span className="font-semibold text-primary">es el primer paso hacia tu libertad financiera.</span>
               </p>
-              <p className="text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed animate-fade-in" style={{ animationDelay: '0.8s' }}>
                 Aquí podrás activarla, descubrir qué puedes lograr con ella y recibir asesoría personalizada para hacerla crecer.
               </p>
-              <div className="pt-4 border-t">
+              <div className="pt-4 border-t animate-fade-in" style={{ animationDelay: '1s' }}>
                 <p className="text-xl font-semibold text-center">
                   🌱 No estás recibiendo un regalo. Estás comenzando una historia.
                 </p>
@@ -104,6 +104,8 @@ const ActivateGift = () => {
               size="lg"
               variant="skandia"
               onClick={() => setStep("intro")}
+              className="animate-fade-in"
+              style={{ animationDelay: '1.2s' }}
             >
               Descubre tu regalo
             </Button>
@@ -206,13 +208,13 @@ const ActivateGift = () => {
           <div className="space-y-8 animate-fade-in">
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                ¿Qué puedes lograr con tu Smart Gift?
+                ¿Que quisieras lograr con tu Smart Gift?
               </h2>
               <p className="text-xl text-muted-foreground mb-2">
                 El mejor regalo es elegir un futuro que te libere
               </p>
               
-              <div className="inline-block bg-accent/10 border border-accent/20 rounded-xl p-4 mt-4">
+              <div className="inline-block bg-blue-50 border border-blue-200 rounded-xl p-4 mt-4">
                 <p className="text-sm font-medium">
                   ¿Primera vez invirtiendo? <br/>
                   <span className="text-muted-foreground">No te preocupes, te guiaremos paso a paso y tendrás acceso a contenido educativo personalizado.</span>
@@ -260,75 +262,160 @@ const ActivateGift = () => {
                 onClick={() => setStep("form")}
                 disabled={selectedOption === null}
               >
-                {selectedOption !== null ? `Elegir ${investmentOptions[selectedOption].title}` : "Selecciona una opción"}
+                {selectedOption !== null ? "Agendar asesoría para iniciar" : "Selecciona una opción"}
               </Button>
             </div>
           </div>
         )}
 
-        {step === "form" && (
+        {step === "form" && selectedOption !== null && (
           <div className="space-y-8 animate-fade-in">
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Agenda tu asesoría personalizada
+                {selectedOption === 0 ? "Inicia tu primera inversión con un experto" :
+                 selectedOption === 1 ? "Inicia tu fondo de emergencia con un experto" :
+                 selectedOption === 2 ? "Inicia tu protección familiar con un experto" :
+                 "Inicia tu portafolio de inversión con un experto"}
               </h2>
               <p className="text-xl text-muted-foreground">
-                Un asesor Skandia te guiará para activar tu producto y acompañarte en tu primera inversión.
+                Agenda una cita personalizada con uno de nuestros asesores financieros especializados. Te guiaremos paso a paso para maximizar tu inversión.
               </p>
             </div>
 
-            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 max-w-2xl mx-auto">
-              <div className="space-y-6">
-                <div>
-                  <Label htmlFor="name">Nombre completo</Label>
-                  <Input
-                    id="name"
-                    placeholder="Tu nombre completo"
-                    value={formData.name}
-                    onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  />
+            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+              {/* Left side - Why schedule */}
+              <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 space-y-6">
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-2xl">⭐</span>
+                  <h3 className="text-xl font-bold">¿Por qué agendar una cita?</h3>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary">✓</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Estrategia Personalizada</h4>
+                      <p className="text-sm text-muted-foreground">Análisis de tu perfil y objetivos específicos</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary">✓</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Maximiza tu Rentabilidad</h4>
+                      <p className="text-sm text-muted-foreground">Estrategias probadas para optimizar tus inversiones</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary">✓</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Gestión de Riesgos</h4>
+                      <p className="text-sm text-muted-foreground">Aprende a proteger y hacer crecer tu dinero</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right side - Form */}
+              <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8">
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold mb-2">Agenda tu Cita Gratuita</h3>
+                  <p className="text-sm text-muted-foreground">Completa la información y selecciona tu horario preferido</p>
                 </div>
 
-                <div>
-                  <Label htmlFor="document">Documento de identidad</Label>
-                  <Input
-                    id="document"
-                    placeholder="Número de documento"
-                    value={formData.document}
-                    onChange={(e) => setFormData(prev => ({ ...prev, document: e.target.value }))}
-                  />
-                </div>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="name">Nombre completo *</Label>
+                      <Input
+                        id="name"
+                        placeholder="Tu nombre"
+                        value={formData.name}
+                        onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email">Email *</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="tu@email.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                      />
+                    </div>
+                  </div>
 
-                <div>
-                  <Label htmlFor="email">Correo electrónico</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="tu@email.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  />
-                </div>
+                  <div>
+                    <Label htmlFor="phone">Teléfono *</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      placeholder="+57 300 123 4567"
+                      value={formData.phone}
+                      onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                    />
+                  </div>
 
-                <div>
-                  <Label htmlFor="phone">Teléfono</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    placeholder="+57 300 123 4567"
-                    value={formData.phone}
-                    onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                  />
-                </div>
+                  <div>
+                    <Label htmlFor="document">Documento de identidad *</Label>
+                    <Input
+                      id="document"
+                      placeholder="Número de documento"
+                      value={formData.document}
+                      onChange={(e) => setFormData(prev => ({ ...prev, document: e.target.value }))}
+                    />
+                  </div>
 
-                <Button 
-                  size="lg"
-                  variant="skandia"
-                  className="w-full"
-                  onClick={handleActivate}
-                >
-                  Confirmar activación
-                </Button>
+                  <div>
+                    <Label className="mb-3 block">Tipo de reunión *</Label>
+                    <div className="space-y-2">
+                      <label className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-accent/5 transition-colors">
+                        <input type="radio" name="meetingType" value="virtual" className="text-primary" defaultChecked />
+                        <div className="flex items-center gap-2">
+                          <span className="text-primary">📹</span>
+                          <div>
+                            <div className="font-medium">Videollamada</div>
+                            <div className="text-xs text-muted-foreground">Reunión virtual por Google Meet</div>
+                          </div>
+                        </div>
+                      </label>
+                      
+                      <label className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-accent/5 transition-colors">
+                        <input type="radio" name="meetingType" value="phone" className="text-primary" />
+                        <div className="flex items-center gap-2">
+                          <span className="text-primary">📞</span>
+                          <div>
+                            <div className="font-medium">Llamada telefónica</div>
+                            <div className="text-xs text-muted-foreground">Llamada directa a tu teléfono</div>
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                    <p className="text-sm text-green-800">
+                      <strong>✓ Consulta gratuita:</strong> Esta primera asesoría es completamente gratuita y sin compromiso.
+                    </p>
+                  </div>
+
+                  <Button 
+                    size="lg"
+                    variant="skandia"
+                    className="w-full"
+                    onClick={handleActivate}
+                  >
+                    Confirmar activación
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
