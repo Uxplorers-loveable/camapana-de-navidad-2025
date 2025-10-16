@@ -41,13 +41,19 @@ const investmentOptions = [
 
 const ActivateGift = () => {
   const navigate = useNavigate();
-  const [step, setStep] = useState<"narrative" | "intro" | "options" | "form" | "success">("narrative");
+  const [step, setStep] = useState<"narrative" | "activation" | "intro" | "options" | "form" | "success">("narrative");
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
-  const [formData, setFormData] = useState({
+  const [activationData, setActivationData] = useState({
+    code: "",
     name: "",
-    document: "",
-    email: "",
     phone: "",
+    email: "",
+    dataConsent: false,
+  });
+  const [schedulingData, setSchedulingData] = useState({
+    date: "",
+    time: "",
+    meetingType: "virtual",
   });
 
   // Datos de ejemplo del regalo recibido
@@ -59,12 +65,19 @@ const ActivateGift = () => {
     to: "Ti",
   };
 
-  const handleActivate = () => {
-    if (!formData.name || !formData.document || !formData.email || !formData.phone) {
-      toast.error("Por favor completa todos los campos");
+  const handleActivationSubmit = () => {
+    if (!activationData.code || !activationData.name || !activationData.email || !activationData.phone || !activationData.dataConsent) {
+      toast.error("Por favor completa todos los campos y acepta el tratamiento de datos");
       return;
     }
-    
+    setStep("intro");
+  };
+
+  const handleSchedulingSubmit = () => {
+    if (!schedulingData.date || !schedulingData.time) {
+      toast.error("Por favor selecciona fecha y hora para tu asesoría");
+      return;
+    }
     setStep("success");
   };
 
@@ -103,7 +116,7 @@ const ActivateGift = () => {
             <Button 
               size="lg"
               variant="skandia"
-              onClick={() => setStep("intro")}
+              onClick={() => setStep("activation")}
               className="animate-fade-in"
               style={{ animationDelay: '1.2s' }}
             >
@@ -121,14 +134,14 @@ const ActivateGift = () => {
       <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
         <Snowfall />
         
-        <div className="container mx-auto px-4 max-w-2xl">
+        <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center space-y-8 animate-fade-in">
             <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
               <Sparkles className="h-10 w-10 text-primary" />
             </div>
             
             <h1 className="text-3xl md:text-4xl font-bold">
-              Listo. Tu asesor se pondrá en contacto contigo muy pronto.
+              ¡Tu asesoría ha sido agendada con éxito!
             </h1>
             
             <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 space-y-4">
@@ -136,9 +149,53 @@ const ActivateGift = () => {
                 Papá Noel y Skandia te dan la bienvenida al futuro que estás construyendo.
               </p>
               <div className="pt-4 space-y-2 text-muted-foreground">
-                <p>📧 Recibirás un correo de confirmación</p>
-                <p>📞 Un asesor te contactará en las próximas 48 horas</p>
-                <p>🎓 Tendrás acceso a contenido educativo personalizado</p>
+                <p>📧 Recibirás un correo de confirmación con los detalles</p>
+                <p>📞 Tu asesor te contactará en la fecha y hora seleccionada</p>
+                <p>🎯 Prepárate para dar el primer paso hacia tu libertad financiera</p>
+              </div>
+            </div>
+
+            {/* Learning Center */}
+            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 text-left">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-3xl">📚</span>
+                <h2 className="text-2xl font-bold">Centro de Aprendizaje</h2>
+              </div>
+              
+              <p className="text-muted-foreground mb-6">
+                Mientras esperas tu asesoría, explora estos recursos educativos diseñados especialmente para ti:
+              </p>
+
+              <div className="space-y-3">
+                <a href="#" className="flex items-center gap-3 p-4 rounded-lg border hover:border-primary transition-colors group">
+                  <span className="text-2xl">📊</span>
+                  <div className="flex-1">
+                    <h3 className="font-semibold group-hover:text-primary transition-colors">Introducción a los fondos de inversión</h3>
+                    <p className="text-sm text-muted-foreground">Aprende los conceptos básicos de inversión</p>
+                  </div>
+                </a>
+
+                <a href="#" className="flex items-center gap-3 p-4 rounded-lg border hover:border-primary transition-colors group">
+                  <span className="text-2xl">💡</span>
+                  <div className="flex-1">
+                    <h3 className="font-semibold group-hover:text-primary transition-colors">Cómo diversificar tu portafolio</h3>
+                    <p className="text-sm text-muted-foreground">Estrategias para proteger tu inversión</p>
+                  </div>
+                </a>
+
+                <a href="#" className="flex items-center gap-3 p-4 rounded-lg border hover:border-primary transition-colors group">
+                  <span className="text-2xl">📈</span>
+                  <div className="flex-1">
+                    <h3 className="font-semibold group-hover:text-primary transition-colors">Entendiendo el riesgo vs rentabilidad</h3>
+                    <p className="text-sm text-muted-foreground">Balance entre seguridad y crecimiento</p>
+                  </div>
+                </a>
+              </div>
+
+              <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20">
+                <p className="text-sm font-medium text-primary">
+                  ✨ Tienes acceso completo al Centro de Aprendizaje Skandia por haber activado tu Smart Gift
+                </p>
               </div>
             </div>
 
@@ -155,15 +212,116 @@ const ActivateGift = () => {
     );
   }
 
+  // Activation code and data entry screen
+  if (step === "activation") {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
+        <div className="container mx-auto px-4 max-w-2xl">
+          <Button
+            variant="ghost"
+            onClick={() => setStep("narrative")}
+            className="mb-6"
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Volver
+          </Button>
+
+          <div className="space-y-8 animate-fade-in">
+            <div className="text-center">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">
+                Activa tu Smart Gift
+              </h1>
+              <p className="text-xl text-muted-foreground">
+                Ingresa tu código de activación y completa tus datos
+              </p>
+            </div>
+
+            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+              <p className="text-sm font-medium">
+                ¿Primera vez invirtiendo? <br/>
+                <span className="text-muted-foreground">No te preocupes, te guiaremos paso a paso y tendrás acceso a contenido educativo personalizado.</span>
+              </p>
+            </div>
+
+            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 space-y-6">
+              <div>
+                <Label htmlFor="code">Código de activación *</Label>
+                <Input
+                  id="code"
+                  placeholder="Ingresa tu código"
+                  value={activationData.code}
+                  onChange={(e) => setActivationData(prev => ({ ...prev, code: e.target.value }))}
+                  className="text-lg tracking-wider"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="name">Nombre completo *</Label>
+                <Input
+                  id="name"
+                  placeholder="Tu nombre completo"
+                  value={activationData.name}
+                  onChange={(e) => setActivationData(prev => ({ ...prev, name: e.target.value }))}
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="phone">Número de celular *</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder="+57 300 123 4567"
+                  value={activationData.phone}
+                  onChange={(e) => setActivationData(prev => ({ ...prev, phone: e.target.value }))}
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="email">Correo electrónico *</Label>
+                <Input
+                  id="email"
+                  type="email"
+                  placeholder="tu@email.com"
+                  value={activationData.email}
+                  onChange={(e) => setActivationData(prev => ({ ...prev, email: e.target.value }))}
+                />
+              </div>
+
+              <div className="flex items-start gap-3 pt-2">
+                <input
+                  type="checkbox"
+                  id="dataConsent"
+                  checked={activationData.dataConsent}
+                  onChange={(e) => setActivationData(prev => ({ ...prev, dataConsent: e.target.checked }))}
+                  className="mt-1"
+                />
+                <Label htmlFor="dataConsent" className="font-normal text-sm cursor-pointer">
+                  Autorizo el uso de mis datos para la activación de mi Smart Gift conforme a la política de privacidad.
+                </Label>
+              </div>
+
+              <Button 
+                size="lg"
+                variant="skandia"
+                className="w-full"
+                onClick={handleActivationSubmit}
+              >
+                Continuar
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
-      {step === "form" && <Snowfall />}
-      
       <div className="container mx-auto px-4 max-w-4xl">
         <Button
           variant="ghost"
           onClick={() => {
-            if (step === "intro") setStep("narrative");
+            if (step === "intro") setStep("activation");
             else if (step === "options") setStep("intro");
             else if (step === "form") setStep("options");
             else navigate("/");
@@ -206,19 +364,41 @@ const ActivateGift = () => {
 
         {step === "options" && (
           <div className="space-y-8 animate-fade-in">
-            <div className="text-center">
+            <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 ¿Que quisieras lograr con tu Smart Gift?
               </h2>
-              <p className="text-xl text-muted-foreground mb-2">
+              <p className="text-xl text-muted-foreground">
                 El mejor regalo es elegir un futuro que te libere
               </p>
-              
-              <div className="inline-block bg-blue-50 border border-blue-200 rounded-xl p-4 mt-4">
-                <p className="text-sm font-medium">
-                  ¿Primera vez invirtiendo? <br/>
-                  <span className="text-muted-foreground">No te preocupes, te guiaremos paso a paso y tendrás acceso a contenido educativo personalizado.</span>
-                </p>
+            </div>
+
+            {/* Stepper */}
+            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-6 mb-8">
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="text-center space-y-2">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                    <span className="text-lg font-bold text-primary">1</span>
+                  </div>
+                  <h3 className="font-semibold">Selecciona tu producto</h3>
+                  <p className="text-sm text-muted-foreground">Elige el fondo que mejor se ajuste a tu objetivo.</p>
+                </div>
+                
+                <div className="text-center space-y-2">
+                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-2">
+                    <span className="text-lg font-bold text-muted-foreground">2</span>
+                  </div>
+                  <h3 className="font-semibold text-muted-foreground">Recibe asesoría y activa tu inversión</h3>
+                  <p className="text-sm text-muted-foreground">Un experto te guiará para activar tu producto.</p>
+                </div>
+                
+                <div className="text-center space-y-2">
+                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-2">
+                    <span className="text-lg font-bold text-muted-foreground">3</span>
+                  </div>
+                  <h3 className="font-semibold text-muted-foreground">Tu regalo se completa</h3>
+                  <p className="text-sm text-muted-foreground">Quien te lo obsequió recibirá las instrucciones de pago.</p>
+                </div>
               </div>
             </div>
 
@@ -278,107 +458,128 @@ const ActivateGift = () => {
                  "Inicia tu portafolio de inversión con un experto"}
               </h2>
               <p className="text-xl text-muted-foreground">
-                Agenda una cita personalizada con uno de nuestros asesores financieros especializados. Te guiaremos paso a paso para maximizar tu inversión.
+                Selecciona el día, hora y tipo de reunión para tu asesoría personalizada
               </p>
             </div>
 
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-              {/* Left side - Why schedule */}
+              {/* Left side - Advisors */}
               <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 space-y-6">
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="text-2xl">⭐</span>
-                  <h3 className="text-xl font-bold">¿Por qué agendar una cita?</h3>
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold mb-2">Nuestros Asesores Especializados</h3>
+                  <p className="text-sm text-muted-foreground">Profesionales certificados con años de experiencia</p>
                 </div>
                 
                 <div className="space-y-4">
-                  <div className="flex gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary">✓</span>
+                  <div className="flex gap-4 p-4 rounded-lg border">
+                    <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                      <span className="text-green-700 font-bold">MR</span>
                     </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Estrategia Personalizada</h4>
-                      <p className="text-sm text-muted-foreground">Análisis de tu perfil y objetivos específicos</p>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-semibold">María Rodríguez</h4>
+                        <span className="text-yellow-500">⭐</span>
+                        <span className="text-sm text-muted-foreground">4.9</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-2">Asesora Senior en Inversiones</p>
+                      <p className="text-xs text-muted-foreground mb-2">8 años de experiencia</p>
+                      <div className="flex gap-2 flex-wrap">
+                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Fondos de inversión</span>
+                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Planificación financiera</span>
+                      </div>
                     </div>
                   </div>
-                  
-                  <div className="flex gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary">✓</span>
+
+                  <div className="flex gap-4 p-4 rounded-lg border">
+                    <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                      <span className="text-green-700 font-bold">CM</span>
                     </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Maximiza tu Rentabilidad</h4>
-                      <p className="text-sm text-muted-foreground">Estrategias probadas para optimizar tus inversiones</p>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-semibold">Carlos Méndez</h4>
+                        <span className="text-yellow-500">⭐</span>
+                        <span className="text-sm text-muted-foreground">4.8</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-2">Especialista en Portafolios</p>
+                      <p className="text-xs text-muted-foreground mb-2">12 años de experiencia</p>
+                      <div className="flex gap-2 flex-wrap">
+                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Diversificación</span>
+                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Análisis de mercado</span>
+                      </div>
                     </div>
                   </div>
-                  
-                  <div className="flex gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-primary">✓</span>
+
+                  <div className="flex gap-4 p-4 rounded-lg border">
+                    <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                      <span className="text-green-700 font-bold">AT</span>
                     </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Gestión de Riesgos</h4>
-                      <p className="text-sm text-muted-foreground">Aprende a proteger y hacer crecer tu dinero</p>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <h4 className="font-semibold">Ana Torres</h4>
+                        <span className="text-yellow-500">⭐</span>
+                        <span className="text-sm text-muted-foreground">4.9</span>
+                      </div>
+                      <p className="text-sm text-muted-foreground mb-2">Consultora Financiera</p>
+                      <p className="text-xs text-muted-foreground mb-2">6 años de experiencia</p>
+                      <div className="flex gap-2 flex-wrap">
+                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Principiantes</span>
+                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Educación financiera</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right side - Form */}
+              {/* Right side - Scheduling Form */}
               <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8">
                 <div className="mb-6">
-                  <h3 className="text-xl font-bold mb-2">Agenda tu Cita Gratuita</h3>
-                  <p className="text-sm text-muted-foreground">Completa la información y selecciona tu horario preferido</p>
+                  <h3 className="text-xl font-bold mb-2">Agenda tu Asesoría</h3>
+                  <p className="text-sm text-muted-foreground">Selecciona tu horario preferido</p>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="name">Nombre completo *</Label>
-                      <Input
-                        id="name"
-                        placeholder="Tu nombre"
-                        value={formData.name}
-                        onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="email">Email *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="tu@email.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                      />
-                    </div>
-                  </div>
-
                   <div>
-                    <Label htmlFor="phone">Teléfono *</Label>
+                    <Label htmlFor="date">Fecha *</Label>
                     <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="+57 300 123 4567"
-                      value={formData.phone}
-                      onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                      id="date"
+                      type="date"
+                      value={schedulingData.date}
+                      onChange={(e) => setSchedulingData(prev => ({ ...prev, date: e.target.value }))}
+                      min={new Date().toISOString().split('T')[0]}
                     />
                   </div>
 
                   <div>
-                    <Label htmlFor="document">Documento de identidad *</Label>
-                    <Input
-                      id="document"
-                      placeholder="Número de documento"
-                      value={formData.document}
-                      onChange={(e) => setFormData(prev => ({ ...prev, document: e.target.value }))}
-                    />
+                    <Label htmlFor="time">Hora *</Label>
+                    <select
+                      id="time"
+                      value={schedulingData.time}
+                      onChange={(e) => setSchedulingData(prev => ({ ...prev, time: e.target.value }))}
+                      className="w-full px-3 py-2 border rounded-md"
+                    >
+                      <option value="">Selecciona una hora</option>
+                      <option value="09:00">09:00 AM</option>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="11:00">11:00 AM</option>
+                      <option value="14:00">02:00 PM</option>
+                      <option value="15:00">03:00 PM</option>
+                      <option value="16:00">04:00 PM</option>
+                      <option value="17:00">05:00 PM</option>
+                    </select>
                   </div>
 
                   <div>
                     <Label className="mb-3 block">Tipo de reunión *</Label>
                     <div className="space-y-2">
                       <label className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-accent/5 transition-colors">
-                        <input type="radio" name="meetingType" value="virtual" className="text-primary" defaultChecked />
+                        <input 
+                          type="radio" 
+                          name="meetingType" 
+                          value="virtual" 
+                          checked={schedulingData.meetingType === "virtual"}
+                          onChange={(e) => setSchedulingData(prev => ({ ...prev, meetingType: e.target.value }))}
+                          className="text-primary" 
+                        />
                         <div className="flex items-center gap-2">
                           <span className="text-primary">📹</span>
                           <div>
@@ -389,7 +590,14 @@ const ActivateGift = () => {
                       </label>
                       
                       <label className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-accent/5 transition-colors">
-                        <input type="radio" name="meetingType" value="phone" className="text-primary" />
+                        <input 
+                          type="radio" 
+                          name="meetingType" 
+                          value="phone"
+                          checked={schedulingData.meetingType === "phone"}
+                          onChange={(e) => setSchedulingData(prev => ({ ...prev, meetingType: e.target.value }))}
+                          className="text-primary" 
+                        />
                         <div className="flex items-center gap-2">
                           <span className="text-primary">📞</span>
                           <div>
@@ -411,9 +619,9 @@ const ActivateGift = () => {
                     size="lg"
                     variant="skandia"
                     className="w-full"
-                    onClick={handleActivate}
+                    onClick={handleSchedulingSubmit}
                   >
-                    Confirmar activación
+                    Confirmar asesoría
                   </Button>
                 </div>
               </div>
