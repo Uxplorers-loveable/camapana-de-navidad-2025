@@ -136,105 +136,137 @@ const ActivateGift = () => {
     );
   }
 
-  // Success screen with snowfall
+  // Success screen with snowfall - NEW MODERN LAYOUT
   if (step === "success") {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
+      <div className="min-h-screen bg-gradient-to-br from-background via-[hsl(182,25%,96%)] to-primary/5 py-12">
         <Snowfall />
         
-        <div className="container mx-auto px-4 max-w-3xl">
-          <div className="text-center space-y-8 animate-fade-in">
-            <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
-              <Sparkles className="h-10 w-10 text-primary" />
-            </div>
-            
-            <h1 className="text-3xl md:text-4xl font-bold">
-              ¡Tu asesoría ha sido agendada con éxito!
-            </h1>
-            
-            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 space-y-6">
-              <p className="text-lg text-center">
-                Papá Noel y Skandia te dan la bienvenida al futuro que estás construyendo.
-              </p>
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="space-y-12 animate-fade-in">
+            {/* Hero Section */}
+            <div className="text-center max-w-3xl mx-auto">
+              <div className="relative inline-block mb-8">
+                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+                <div className="relative w-32 h-32 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center mx-auto shadow-2xl">
+                  <Sparkles className="h-16 w-16 text-white" />
+                </div>
+              </div>
               
-              <div className="space-y-4">
-                <div className="flex items-start gap-4 p-4 bg-primary/5 rounded-xl border border-primary/20">
-                  <span className="text-2xl">📧</span>
-                  <div>
-                    <p className="font-semibold text-primary mb-1">Confirmación enviada</p>
-                    <p className="text-sm text-muted-foreground">Recibirás un correo de confirmación con los detalles</p>
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary via-primary to-[hsl(182,70%,35%)] bg-clip-text text-transparent">
+                ¡Felicidades!
+              </h1>
+              
+              <h2 className="text-2xl md:text-3xl font-semibold mb-6">
+                Tu asesoría ha sido confirmada
+              </h2>
+              
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Papá Noel y Skandia te dan la bienvenida al futuro que estás construyendo. Este es el primer paso hacia tu libertad financiera.
+              </p>
+            </div>
+
+            {/* What's Next Section */}
+            <div className="bg-card rounded-3xl shadow-2xl p-8 md:p-12 border border-primary/10">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl md:text-3xl font-bold mb-2">¿Qué sigue ahora?</h3>
+                <p className="text-muted-foreground">Preparamos todo para que tu experiencia sea perfecta</p>
+              </div>
+              
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="group">
+                  <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-6 text-center h-full border-2 border-transparent group-hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
+                    <div className="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <span className="text-4xl">📧</span>
+                    </div>
+                    <h4 className="font-bold text-lg mb-3">Recibirás un correo de confirmación con los detalles</h4>
+                    <p className="text-sm text-muted-foreground">Revisa tu bandeja de entrada con todos los detalles de tu cita</p>
                   </div>
                 </div>
-                
-                <div className="flex items-start gap-4 p-4 bg-primary/5 rounded-xl border border-primary/20">
-                  <span className="text-2xl">📞</span>
-                  <div>
-                    <p className="font-semibold text-primary mb-1">Tu asesor te contactará</p>
-                    <p className="text-sm text-muted-foreground">En la fecha y hora seleccionada</p>
+
+                <div className="group">
+                  <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-6 text-center h-full border-2 border-transparent group-hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
+                    <div className="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <span className="text-4xl">📞</span>
+                    </div>
+                    <h4 className="font-bold text-lg mb-3">Tu asesor te contactará en la fecha y hora seleccionada</h4>
+                    <p className="text-sm text-muted-foreground">Un experto certificado te guiará personalmente</p>
                   </div>
                 </div>
-                
-                <div className="flex items-start gap-4 p-4 bg-primary/5 rounded-xl border border-primary/20">
-                  <span className="text-2xl">🎯</span>
-                  <div>
-                    <p className="font-semibold text-primary mb-1">Tu primer paso</p>
-                    <p className="text-sm text-muted-foreground">Prepárate para dar el primer paso hacia tu libertad financiera</p>
+
+                <div className="group">
+                  <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-6 text-center h-full border-2 border-transparent group-hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
+                    <div className="w-16 h-16 rounded-full bg-white shadow-lg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                      <span className="text-4xl">🎯</span>
+                    </div>
+                    <h4 className="font-bold text-lg mb-3">Prepárate para dar el primer paso hacia tu libertad financiera</h4>
+                    <p className="text-sm text-muted-foreground">Comienza tu camino hacia un futuro próspero</p>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Learning Center */}
-            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 text-left">
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-3xl">📚</span>
-                <h2 className="text-2xl font-bold">Tu centro de aprendizaje</h2>
+            <div className="bg-gradient-to-br from-card to-primary/5 rounded-3xl shadow-2xl overflow-hidden border border-primary/10">
+              <div className="bg-gradient-to-r from-primary to-[hsl(182,70%,35%)] p-8 md:p-10 text-white">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+                    <span className="text-4xl">📚</span>
+                  </div>
+                  <div>
+                    <h2 className="text-3xl md:text-4xl font-bold">Tu centro de aprendizaje</h2>
+                    <p className="text-white/90 text-lg mt-1">
+                      Desde ya puedes explorar estos recursos educativos diseñados especialmente para ti
+                    </p>
+                  </div>
+                </div>
               </div>
-              
-              <p className="text-muted-foreground mb-6">
-                Desde ya puedes explorar estos recursos educativos diseñados especialmente para ti
-              </p>
 
-              <div className="space-y-3">
-                <a href="#" className="flex items-center gap-3 p-4 rounded-lg border hover:border-primary transition-colors group">
-                  <span className="text-2xl">📊</span>
-                  <div className="flex-1">
-                    <h3 className="font-semibold group-hover:text-primary transition-colors">Introducción a los fondos de inversión</h3>
+              <div className="p-8 md:p-10">
+                <div className="grid md:grid-cols-3 gap-4 mb-6">
+                  <a href="#" className="group bg-white rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <span className="text-3xl">📊</span>
+                    </div>
+                    <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">Introducción a los fondos de inversión</h3>
                     <p className="text-sm text-muted-foreground">Aprende los conceptos básicos de inversión</p>
-                  </div>
-                </a>
+                  </a>
 
-                <a href="#" className="flex items-center gap-3 p-4 rounded-lg border hover:border-primary transition-colors group">
-                  <span className="text-2xl">💡</span>
-                  <div className="flex-1">
-                    <h3 className="font-semibold group-hover:text-primary transition-colors">Cómo diversificar tu portafolio</h3>
+                  <a href="#" className="group bg-white rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <span className="text-3xl">💡</span>
+                    </div>
+                    <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">Cómo diversificar tu portafolio</h3>
                     <p className="text-sm text-muted-foreground">Estrategias para proteger tu inversión</p>
-                  </div>
-                </a>
+                  </a>
 
-                <a href="#" className="flex items-center gap-3 p-4 rounded-lg border hover:border-primary transition-colors group">
-                  <span className="text-2xl">📈</span>
-                  <div className="flex-1">
-                    <h3 className="font-semibold group-hover:text-primary transition-colors">Entendiendo el riesgo vs rentabilidad</h3>
+                  <a href="#" className="group bg-white rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <span className="text-3xl">📈</span>
+                    </div>
+                    <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">Entendiendo el riesgo vs rentabilidad</h3>
                     <p className="text-sm text-muted-foreground">Balance entre seguridad y crecimiento</p>
-                  </div>
-                </a>
-              </div>
+                  </a>
+                </div>
 
-              <div className="mt-6 p-4 bg-primary/5 rounded-lg border border-primary/20">
-                <p className="text-sm font-medium text-primary">
-                  ✨ Tienes acceso completo al Centro de Aprendizaje Skandia por haber activado tu Smart Gift
-                </p>
+                <div className="bg-primary/10 border-2 border-primary/30 rounded-2xl p-6 text-center">
+                  <p className="font-semibold text-primary text-lg">
+                    ✨ Tienes acceso completo al Centro de Aprendizaje Skandia por haber activado tu Smart Gift
+                  </p>
+                </div>
               </div>
             </div>
 
-            <Button 
-              size="lg"
-              variant="skandia"
-              onClick={() => navigate("/")}
-            >
-              Volver al inicio
-            </Button>
+            <div className="text-center">
+              <Button 
+                size="lg"
+                variant="skandia"
+                onClick={() => navigate("/")}
+                className="text-lg px-12 h-14"
+              >
+                Volver al inicio
+              </Button>
+            </div>
           </div>
         </div>
       </div>
