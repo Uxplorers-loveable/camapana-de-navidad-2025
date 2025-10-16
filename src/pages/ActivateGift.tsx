@@ -152,14 +152,35 @@ const ActivateGift = () => {
               ¡Tu asesoría ha sido agendada con éxito!
             </h1>
             
-            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 space-y-4">
-              <p className="text-lg">
+            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 space-y-6">
+              <p className="text-lg text-center">
                 Papá Noel y Skandia te dan la bienvenida al futuro que estás construyendo.
               </p>
-              <div className="pt-4 space-y-2 text-muted-foreground">
-                <p>📧 Recibirás un correo de confirmación con los detalles</p>
-                <p>📞 Tu asesor te contactará en la fecha y hora seleccionada</p>
-                <p>🎯 Prepárate para dar el primer paso hacia tu libertad financiera</p>
+              
+              <div className="space-y-4">
+                <div className="flex items-start gap-4 p-4 bg-primary/5 rounded-xl border border-primary/20">
+                  <span className="text-2xl">📧</span>
+                  <div>
+                    <p className="font-semibold text-primary mb-1">Confirmación enviada</p>
+                    <p className="text-sm text-muted-foreground">Recibirás un correo de confirmación con los detalles</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4 p-4 bg-primary/5 rounded-xl border border-primary/20">
+                  <span className="text-2xl">📞</span>
+                  <div>
+                    <p className="font-semibold text-primary mb-1">Tu asesor te contactará</p>
+                    <p className="text-sm text-muted-foreground">En la fecha y hora seleccionada</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4 p-4 bg-primary/5 rounded-xl border border-primary/20">
+                  <span className="text-2xl">🎯</span>
+                  <div>
+                    <p className="font-semibold text-primary mb-1">Tu primer paso</p>
+                    <p className="text-sm text-muted-foreground">Prepárate para dar el primer paso hacia tu libertad financiera</p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -167,11 +188,11 @@ const ActivateGift = () => {
             <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 text-left">
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-3xl">📚</span>
-                <h2 className="text-2xl font-bold">Centro de Aprendizaje</h2>
+                <h2 className="text-2xl font-bold">Tu centro de aprendizaje</h2>
               </div>
               
               <p className="text-muted-foreground mb-6">
-                Mientras esperas tu asesoría, explora estos recursos educativos diseñados especialmente para ti:
+                Desde ya puedes explorar estos recursos educativos diseñados especialmente para ti
               </p>
 
               <div className="space-y-3">
@@ -223,65 +244,73 @@ const ActivateGift = () => {
   // Activation code entry screen
   if (step === "codeEntry") {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8 flex items-center">
-        <div className="container mx-auto px-4 max-w-2xl">
+      <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-12 flex items-center">
+        <div className="container mx-auto px-4 max-w-xl">
           <Button
             variant="ghost"
             onClick={() => setStep("narrative")}
-            className="mb-6"
+            className="mb-8"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
             Volver
           </Button>
 
-          <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 md:p-12 space-y-6 animate-fade-in">
-            <div className="text-center space-y-4">
-              <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
-                <Gift className="h-12 w-12 text-primary" />
+          <div className="bg-card rounded-3xl shadow-[var(--shadow-card)] p-10 md:p-14 space-y-8 animate-fade-in">
+            <div className="text-center space-y-6">
+              <div className="w-28 h-28 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                <Gift className="h-14 w-14 text-primary" />
               </div>
               
-              <h1 className="text-3xl md:text-4xl font-bold text-primary">
-                ¡Tienes un regalo esperándote!
-              </h1>
-              
-              <p className="text-lg text-muted-foreground">
-                Ingresa tu código de activación para descubrir tu regalo de inversión
-              </p>
+              <div className="space-y-3">
+                <h1 className="text-4xl md:text-5xl font-bold text-primary">
+                  ¡Tienes un regalo esperándote!
+                </h1>
+                
+                <p className="text-lg text-muted-foreground max-w-md mx-auto">
+                  Ingresa tu código de activación para descubrir tu regalo de inversión
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-4">
-              <div>
+            <div className="space-y-6">
+              <div className="space-y-3">
                 <Label htmlFor="code" className="text-base font-semibold">Código de activación</Label>
                 <Input
                   id="code"
                   placeholder="Ingresa tu código aquí"
                   value={activationData.code}
                   onChange={(e) => setActivationData(prev => ({ ...prev, code: e.target.value }))}
-                  className="text-lg tracking-wider text-center"
+                  className="text-xl tracking-wider text-center h-14"
                 />
-                <p className="text-sm text-muted-foreground mt-2 text-center">
-                  Deberías haber recibido este código por email, WhatsApp o un enlace directo
+                <p className="text-sm text-muted-foreground text-center">
+                  Deberías haber recibido este código por email o WhatsApp
                 </p>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-                <div className="flex items-start gap-2">
-                  <Sparkles className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                  <p className="text-sm">
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
+                <div className="flex items-start gap-3">
+                  <Sparkles className="h-6 w-6 text-blue-600 flex-shrink-0 mt-0.5" />
+                  <p className="text-sm leading-relaxed">
                     <span className="font-semibold text-blue-900">¿Primera vez invirtiendo?</span>{" "}
                     <span className="text-blue-800">No te preocupes, te guiaremos paso a paso y tendrás acceso a contenido educativo personalizado.</span>
                   </p>
                 </div>
               </div>
 
+              <div className="text-center py-3">
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-50 border border-amber-200 rounded-full text-sm font-medium text-amber-900">
+                  ⏰ Tienes 30 días para activar tu regalo
+                </div>
+              </div>
+
               <Button 
                 size="lg"
                 variant="skandia"
-                className="w-full"
+                className="w-full h-14 text-lg"
                 onClick={handleCodeSubmit}
               >
                 <Gift className="mr-2 h-5 w-5" />
-                Activar mi Regalo
+                Activar mi Smart Gift
               </Button>
             </div>
           </div>
@@ -434,30 +463,34 @@ const ActivateGift = () => {
             </div>
 
             {/* Stepper */}
-            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-6 mb-8">
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center space-y-2">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-2">
-                    <span className="text-lg font-bold text-primary">1</span>
+            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 mb-8">
+              <div className="flex items-center justify-between gap-4 max-w-4xl mx-auto">
+                <div className="flex flex-col items-center flex-1">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                    <span className="text-xl font-bold text-primary">1</span>
                   </div>
-                  <h3 className="font-semibold">Selecciona tu producto</h3>
-                  <p className="text-sm text-muted-foreground">Elige el fondo que mejor se ajuste a tu objetivo.</p>
+                  <h3 className="font-semibold text-center mb-1">Selecciona tu producto</h3>
+                  <p className="text-xs text-muted-foreground text-center">Elige el fondo que mejor se ajuste a tu objetivo.</p>
                 </div>
                 
-                <div className="text-center space-y-2">
-                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-2">
-                    <span className="text-lg font-bold text-muted-foreground">2</span>
+                <div className="h-0.5 w-12 bg-muted -mt-8 hidden md:block"></div>
+                
+                <div className="flex flex-col items-center flex-1">
+                  <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center mb-3">
+                    <span className="text-xl font-bold text-muted-foreground">2</span>
                   </div>
-                  <h3 className="font-semibold text-muted-foreground">Recibe asesoría y activa tu inversión</h3>
-                  <p className="text-sm text-muted-foreground">Un experto te guiará para activar tu producto.</p>
+                  <h3 className="font-semibold text-muted-foreground text-center mb-1">Recibe asesoría y activa tu inversión</h3>
+                  <p className="text-xs text-muted-foreground text-center">Un experto te guiará para activar tu producto.</p>
                 </div>
                 
-                <div className="text-center space-y-2">
-                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mx-auto mb-2">
-                    <span className="text-lg font-bold text-muted-foreground">3</span>
+                <div className="h-0.5 w-12 bg-muted -mt-8 hidden md:block"></div>
+                
+                <div className="flex flex-col items-center flex-1">
+                  <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center mb-3">
+                    <span className="text-xl font-bold text-muted-foreground">3</span>
                   </div>
-                  <h3 className="font-semibold text-muted-foreground">Tu regalo se completa</h3>
-                  <p className="text-sm text-muted-foreground">Quien te lo obsequió recibirá las instrucciones de pago.</p>
+                  <h3 className="font-semibold text-muted-foreground text-center mb-1">Tu regalo se completa</h3>
+                  <p className="text-xs text-muted-foreground text-center">Quien te lo obsequió recibirá las instrucciones de pago.</p>
                 </div>
               </div>
             </div>
@@ -523,67 +556,89 @@ const ActivateGift = () => {
             </div>
 
             <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
-              {/* Left side - Advisors */}
-              <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 space-y-6">
-                <div className="mb-6">
-                  <h3 className="text-xl font-bold mb-2">Nuestros Asesores Especializados</h3>
-                  <p className="text-sm text-muted-foreground">Profesionales certificados con años de experiencia</p>
+              {/* Left side - Why Schedule & Advisors */}
+              <div className="space-y-6">
+                {/* Why Schedule */}
+                <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="text-3xl">⭐</span>
+                    <h3 className="text-xl font-bold">¿Por qué agendar una cita?</h3>
+                  </div>
+                  
+                  <div className="space-y-5">
+                    <div className="flex gap-4">
+                      <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                        <span className="text-2xl">🎯</span>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">Estrategia Personalizada</h4>
+                        <p className="text-sm text-muted-foreground">Análisis de tu perfil y objetivos específicos</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4">
+                      <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                        <span className="text-2xl">📈</span>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">Maximiza tu Rentabilidad</h4>
+                        <p className="text-sm text-muted-foreground">Estrategias probadas para optimizar tus inversiones</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4">
+                      <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center flex-shrink-0">
+                        <span className="text-2xl">🛡️</span>
+                      </div>
+                      <div>
+                        <h4 className="font-semibold mb-1">Gestión de Riesgos</h4>
+                        <p className="text-sm text-muted-foreground">Aprende a proteger y hacer crecer tu dinero</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                
-                <div className="space-y-4">
-                  <div className="flex gap-4 p-4 rounded-lg border">
-                    <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                      <span className="text-green-700 font-bold">MR</span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold">María Rodríguez</h4>
-                        <span className="text-yellow-500">⭐</span>
-                        <span className="text-sm text-muted-foreground">4.9</span>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-2">Asesora Senior en Inversiones</p>
-                      <p className="text-xs text-muted-foreground mb-2">8 años de experiencia</p>
-                      <div className="flex gap-2 flex-wrap">
-                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Fondos de inversión</span>
-                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Planificación financiera</span>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className="flex gap-4 p-4 rounded-lg border">
-                    <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                      <span className="text-green-700 font-bold">CM</span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold">Carlos Méndez</h4>
-                        <span className="text-yellow-500">⭐</span>
-                        <span className="text-sm text-muted-foreground">4.8</span>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-2">Especialista en Portafolios</p>
-                      <p className="text-xs text-muted-foreground mb-2">12 años de experiencia</p>
-                      <div className="flex gap-2 flex-wrap">
-                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Diversificación</span>
-                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Análisis de mercado</span>
-                      </div>
-                    </div>
+                {/* Advisors */}
+                <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8">
+                  <div className="mb-6">
+                    <h3 className="text-xl font-bold mb-2">Nuestros Asesores</h3>
+                    <p className="text-sm text-muted-foreground">Profesionales certificados listos para ayudarte</p>
                   </div>
-
-                  <div className="flex gap-4 p-4 rounded-lg border">
-                    <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                      <span className="text-green-700 font-bold">AT</span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <h4 className="font-semibold">Ana Torres</h4>
-                        <span className="text-yellow-500">⭐</span>
-                        <span className="text-sm text-muted-foreground">4.9</span>
+                  
+                  <div className="space-y-4">
+                    <div className="flex gap-4 p-4 rounded-lg border">
+                      <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <span className="text-green-700 font-bold">MR</span>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2">Consultora Financiera</p>
-                      <p className="text-xs text-muted-foreground mb-2">6 años de experiencia</p>
-                      <div className="flex gap-2 flex-wrap">
-                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Principiantes</span>
-                        <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Educación financiera</span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-semibold">María Rodríguez</h4>
+                          <span className="text-yellow-500">⭐</span>
+                          <span className="text-sm text-muted-foreground">4.9</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-2">Asesora Senior • 8 años</p>
+                        <div className="flex gap-2 flex-wrap">
+                          <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Fondos de inversión</span>
+                          <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Planificación</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-4 p-4 rounded-lg border">
+                      <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                        <span className="text-green-700 font-bold">CM</span>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-semibold">Carlos Méndez</h4>
+                          <span className="text-yellow-500">⭐</span>
+                          <span className="text-sm text-muted-foreground">4.8</span>
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-2">Especialista en Portafolios • 12 años</p>
+                        <div className="flex gap-2 flex-wrap">
+                          <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Diversificación</span>
+                          <span className="text-xs px-2 py-1 bg-secondary/20 rounded">Análisis</span>
+                        </div>
                       </div>
                     </div>
                   </div>
