@@ -9,9 +9,9 @@ interface GiftCardProps {
   className?: string;
 }
 
-import template1 from "@/assets/gift-card-template-1.jpg";
-import template2 from "@/assets/gift-card-template-2.jpg";
-import template3 from "@/assets/gift-card-template-3.jpg";
+import template1 from "@/assets/gift-template-1.jpg";
+import template2 from "@/assets/gift-template-2.jpg";
+import template3 from "@/assets/gift-template-3.jpg";
 
 const templates = {
   1: {
