@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { Gift } from "lucide-react";
+import { Gift, TrendingUp } from "lucide-react";
 import heroImage from "@/assets/hero-couple-gift.jpg";
-import santaHat from "@/assets/santa-hat.png";
+import santaHat from "@/assets/santa-hat-clean.png";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -36,11 +36,12 @@ const Home = () => {
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
                 Un regalo que{" "}
                 <span className="relative inline-block">
-                  <span className="text-primary">crece</span>
+                  <span className="text-primary relative z-10">crece</span>
                   <img 
                     src={santaHat} 
                     alt="" 
-                    className="absolute -top-8 -left-6 md:-top-12 md:-left-8 w-12 h-12 md:w-16 md:h-16 -rotate-12"
+                    className="absolute -top-6 -left-4 md:-top-10 md:-left-6 w-10 h-10 md:w-14 md:h-14 -rotate-12 opacity-90"
+                    style={{ mixBlendMode: 'multiply' }}
                   />
                 </span>
                 {" "}con el tiempo.
@@ -97,26 +98,45 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Simple Features Section */}
-      <section className="py-20 md:py-32 bg-muted/30">
-        <div className="container mx-auto px-4 max-w-5xl">
-          <div className="grid md:grid-cols-2 gap-16">
-            <div className="space-y-4">
-              <Gift className="h-12 w-12 text-primary" />
-              <h3 className="text-2xl font-semibold">Regala con propósito</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Cada Smart Gift es una inversión que crece con el tiempo. Elige el diseño, el monto y añade un mensaje personalizado.
-              </p>
+      {/* Features Section */}
+      <section className="py-20 md:py-32 relative">
+        {/* Decorative dots */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-40 left-20 w-2 h-2 rounded-full bg-primary/30"></div>
+          <div className="absolute bottom-40 right-32 w-3 h-3 rounded-full bg-destructive/20"></div>
+          <div className="absolute top-60 right-20 w-2 h-2 rounded-full bg-yellow-400/30"></div>
+        </div>
+
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+            {/* Card 1 */}
+            <div className="group bg-card rounded-3xl p-8 md:p-10 shadow-sm hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-primary/20">
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Gift className="h-7 w-7 text-primary" />
+                </div>
+                <div className="space-y-3 flex-1">
+                  <h3 className="text-2xl md:text-3xl font-bold">Regala con propósito</h3>
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                    Cada Smart Gift es una inversión que crece con el tiempo. Elige el diseño, el monto y añade un mensaje personalizado.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-2xl">✨</span>
+            {/* Card 2 */}
+            <div className="group bg-card rounded-3xl p-8 md:p-10 shadow-sm hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-primary/20">
+              <div className="flex items-start gap-6">
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <TrendingUp className="h-7 w-7 text-primary" />
+                </div>
+                <div className="space-y-3 flex-1">
+                  <h3 className="text-2xl md:text-3xl font-bold">Construye futuro</h3>
+                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                    Tu regalo se convierte en el primer paso hacia la libertad financiera. Un asesor Skandia guiará cada decisión.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold">Construye futuro</h3>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Tu regalo se convierte en el primer paso hacia la libertad financiera. Un asesor Skandia guiará cada decisión.
-              </p>
             </div>
           </div>
         </div>
