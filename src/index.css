@@ -8,10 +8,10 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Skandia Brand Colors - Vibrant Green */
-    --skandia-green: 147 100% 42%;
-    --skandia-green-light: 147 100% 55%;
-    --skandia-green-dark: 147 100% 32%;
+    /* Skandia Brand Colors - Vibrant Green #00C73D */
+    --skandia-green: 138 100% 39%;
+    --skandia-green-light: 138 100% 50%;
+    --skandia-green-dark: 138 100% 29%;
     
     /* Background & Surfaces */
     --background: 0 0% 100%;
@@ -24,7 +24,7 @@ All colors MUST be HSL.
     --popover-foreground: 240 10% 20%;
     
     /* Primary - Skandia Green */
-    --primary: 147 100% 42%;
+    --primary: 138 100% 39%;
     --primary-foreground: 0 0% 100%;
     
     /* Secondary */
@@ -36,7 +36,7 @@ All colors MUST be HSL.
     --muted-foreground: 240 4% 46%;
     
     /* Accent */
-    --accent: 147 100% 42%;
+    --accent: 138 100% 39%;
     --accent-foreground: 0 0% 100%;
     
     /* Destructive */
@@ -46,7 +46,7 @@ All colors MUST be HSL.
     /* Borders & Inputs */
     --border: 240 6% 90%;
     --input: 240 6% 90%;
-    --ring: 147 100% 42%;
+    --ring: 138 100% 39%;
     
     --radius: 0.75rem;
     
@@ -72,7 +72,7 @@ All colors MUST be HSL.
     --popover: 240 10% 12%;
     --popover-foreground: 0 0% 98%;
     
-    --primary: 147 100% 42%;
+    --primary: 138 100% 39%;
     --primary-foreground: 0 0% 100%;
     
     --secondary: 240 4% 16%;
@@ -81,7 +81,7 @@ All colors MUST be HSL.
     --muted: 240 4% 16%;
     --muted-foreground: 240 5% 65%;
     
-    --accent: 147 100% 42%;
+    --accent: 138 100% 39%;
     --accent-foreground: 0 0% 100%;
     
     --destructive: 0 63% 31%;
@@ -89,7 +89,7 @@ All colors MUST be HSL.
     
     --border: 240 4% 16%;
     --input: 240 4% 16%;
-    --ring: 147 100% 42%;
+    --ring: 138 100% 39%;
   }
 }
 
