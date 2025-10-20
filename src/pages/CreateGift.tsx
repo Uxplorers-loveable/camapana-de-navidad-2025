@@ -5,7 +5,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import GiftCard from "@/components/GiftCard";
-import Snowfall from "@/components/Snowfall";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { ArrowLeft, ArrowRight, Check, Share2 } from "lucide-react";
@@ -95,8 +94,6 @@ const CreateGift = () => {
   if (currentStep === -1) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
-        <Snowfall />
-        
         <div className="container mx-auto px-4 max-w-4xl">
           <Button
             variant="ghost"
@@ -120,10 +117,9 @@ const CreateGift = () => {
             <div className="space-y-8">
               {[
                 { num: "1", title: "Crea tu gift card personalizada", desc: "Elige el diseño, monto y mensaje perfecto" },
-                { num: "2", title: "Elige cuándo y cómo será entregada", desc: "Programa la fecha y selecciona el método de envío" },
-                { num: "3", title: "La persona que la reciba podrá activarla en 30 días", desc: "Tu destinatario tendrá tiempo para activar su regalo" },
-                { num: "4", title: "Skandia la guiará para seleccionar su producto de inversión", desc: "Un asesor especializado le ayudará a elegir la mejor opción" },
-                { num: "5", title: "Te notificaremos para que realices el pago", desc: "Cuando el destinatario active su inversión, recibirás las instrucciones para hacer el pago." }
+                { num: "2", title: "La persona que la reciba podrá activarla en 30 días", desc: "Tu destinatario tendrá tiempo para activar su regalo" },
+                { num: "3", title: "Skandia la guiará para seleccionar su producto de inversión", desc: "Un asesor especializado le ayudará a elegir la mejor opción" },
+                { num: "4", title: "Te notificaremos para que realices el pago", desc: "Cuando el destinatario active su inversión, recibirás las instrucciones para hacer el pago." }
               ].map((step, index) => (
                 <div key={index} className="flex gap-4 items-start">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
@@ -153,12 +149,10 @@ const CreateGift = () => {
     );
   }
 
-  // Final success screen with snowfall
+  // Final success screen
   if (currentStep === 7) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
-        <Snowfall />
-        
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-8 animate-fade-in">
             <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
@@ -230,8 +224,6 @@ const CreateGift = () => {
   if (currentStep === 6) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
-        <Snowfall />
-        
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">
