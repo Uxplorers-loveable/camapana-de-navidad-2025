@@ -98,7 +98,7 @@ const SmartGiftStepper = ({ currentStep, showTitle = false }: SmartGiftStepperPr
                 <div className="mt-4 space-y-2">
                   <h4
                     className={cn(
-                      "font-bold text-base md:text-lg transition-colors duration-300",
+                      "font-bold text-sm md:text-base transition-colors duration-300",
                       isCompleted && "text-primary",
                       isActive && "text-primary",
                       isFuture && "text-muted-foreground"
@@ -108,7 +108,7 @@ const SmartGiftStepper = ({ currentStep, showTitle = false }: SmartGiftStepperPr
                   </h4>
                   <p
                     className={cn(
-                      "text-sm leading-relaxed transition-colors duration-300",
+                      "text-xs leading-relaxed transition-colors duration-300",
                       isCompleted && "text-muted-foreground",
                       isActive && "text-foreground",
                       isFuture && "text-muted-foreground/70"

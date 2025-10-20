@@ -145,6 +145,11 @@ const ActivateGift = () => {
         
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="space-y-12 animate-fade-in">
+            {/* Stepper showing progress */}
+            <div className="bg-card rounded-3xl shadow-2xl p-8 md:p-12 border border-primary/10">
+              <SmartGiftStepper currentStep={2} showTitle={true} />
+            </div>
+
             {/* Hero Section */}
             <div className="text-center max-w-3xl mx-auto">
               <div className="relative inline-block mb-8">
@@ -165,11 +170,6 @@ const ActivateGift = () => {
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Papá Noel y Skandia te dan la bienvenida al futuro que estás construyendo. Este es el primer paso hacia tu libertad financiera.
               </p>
-            </div>
-
-            {/* Stepper showing progress */}
-            <div className="bg-card rounded-3xl shadow-2xl p-8 md:p-12 border border-primary/10">
-              <SmartGiftStepper currentStep={2} showTitle={true} />
             </div>
 
             {/* Learning Center */}
@@ -451,6 +451,11 @@ const ActivateGift = () => {
 
         {step === "options" && (
           <div className="space-y-8 animate-fade-in">
+            {/* Stepper */}
+            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 mb-8">
+              <SmartGiftStepper currentStep={0} />
+            </div>
+
             <div className="text-center mb-8">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 ¿Que quisieras lograr con tu Smart Gift?
@@ -458,11 +463,6 @@ const ActivateGift = () => {
               <p className="text-xl text-muted-foreground">
                 El mejor regalo es elegir un futuro que te libere
               </p>
-            </div>
-
-            {/* Stepper */}
-            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 mb-8">
-              <SmartGiftStepper currentStep={0} />
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
