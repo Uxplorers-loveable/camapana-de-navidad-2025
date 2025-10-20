@@ -10,20 +10,20 @@ const steps = [
   {
     number: 1,
     emoji: "1️⃣",
-    title: "Selecciona tu producto de inversión",
+    title: "Selecciona tu producto",
     description: "Elige el que mejor se adapte a tu objetivo.",
   },
   {
     number: 2,
     emoji: "2️⃣",
-    title: "Agenda tu asesoría personalizada",
+    title: "Agenda tu asesoría",
     description: "Resuelve dudas y define tu inversión.",
   },
   {
     number: 3,
     emoji: "3️⃣",
-    title: "Activa tu inversión con tu asesor",
-    description: "Completa el proceso con su acompañamiento.",
+    title: "Activa tu inversión",
+    description: "Completa el proceso con tu asesor.",
   },
   {
     number: 4,
