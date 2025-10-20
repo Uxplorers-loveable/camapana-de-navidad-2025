@@ -45,7 +45,7 @@ const SmartGiftStepper = ({ currentStep, showTitle = false }: SmartGiftStepperPr
       {/* Horizontal Stepper */}
       <div className="relative">
         {/* Connection Lines Container */}
-        <div className="absolute top-4 left-0 right-0 hidden md:flex items-center justify-between px-12">
+        <div className="absolute top-6 left-0 right-0 hidden md:flex items-center justify-between px-12">
           {steps.slice(0, -1).map((_, index) => (
             <div key={index} className="flex-1 h-1 mx-4">
               <div
@@ -70,7 +70,7 @@ const SmartGiftStepper = ({ currentStep, showTitle = false }: SmartGiftStepperPr
                 {/* Step Circle */}
                 <div
                   className={cn(
-                    "w-12 h-12 rounded-x64 flex items-center justify-center font-bold text-lg transition-all duration-500 shadow-md z-10 relative",
+                    "w-12 h-12 rounded-x4 flex items-center justify-center font-bold text-lg transition-all duration-500 shadow-md z-10 relative",
                     isCompleted && "bg-primary text-white",
                     isActive && "bg-primary text-white shadow-[0_0_15px_rgba(0,177,169,0.4)]",
                     isFuture && "bg-muted text-muted-foreground",
