@@ -169,7 +169,7 @@ const ActivateGift = () => {
 
             {/* Stepper showing progress */}
             <div className="bg-card rounded-3xl shadow-2xl p-8 md:p-12 border border-primary/10">
-              <SmartGiftStepper currentStep={2} />
+              <SmartGiftStepper currentStep={2} showTitle={true} />
             </div>
 
             {/* Learning Center */}

@@ -3,6 +3,7 @@ import { Check } from "lucide-react";
 
 interface SmartGiftStepperProps {
   currentStep: number; // 0-3 representing which step is active
+  showTitle?: boolean; // Whether to show the title
 }
 
 const steps = [
@@ -16,7 +17,7 @@ const steps = [
     number: 2,
     emoji: "2️⃣",
     title: "Agenda tu asesoría personalizada",
-    description: "Programa una cita para resolver tus dudas y definir tu inversión.",
+    description: "Resuelve dudas y define tu inversión.",
   },
   {
     number: 3,
@@ -32,12 +33,14 @@ const steps = [
   },
 ];
 
-const SmartGiftStepper = ({ currentStep }: SmartGiftStepperProps) => {
+const SmartGiftStepper = ({ currentStep, showTitle = false }: SmartGiftStepperProps) => {
   return (
     <div className="w-full">
-      <div className="mb-10 text-center">
-        <h3 className="text-2xl md:text-3xl font-bold mb-2">Tus próximos pasos con Smart Gift</h3>
-      </div>
+      {showTitle && (
+        <div className="mb-10 text-center">
+          <h3 className="text-2xl md:text-3xl font-bold mb-2">Tus próximos pasos con Smart Gift</h3>
+        </div>
+      )}
 
       {/* Horizontal Stepper */}
       <div className="relative">
