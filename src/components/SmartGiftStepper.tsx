@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { CheckCircle2, Circle } from "lucide-react";
+import { Check } from "lucide-react";
 
 interface SmartGiftStepperProps {
   currentStep: number; // 0-3 representing which step is active
@@ -8,21 +8,25 @@ interface SmartGiftStepperProps {
 const steps = [
   {
     number: 1,
+    emoji: "1️⃣",
     title: "Selecciona tu producto de inversión",
     description: "Elige el que mejor se adapte a tu objetivo.",
   },
   {
     number: 2,
+    emoji: "2️⃣",
     title: "Agenda tu asesoría personalizada",
     description: "Programa una cita para resolver tus dudas y definir tu inversión.",
   },
   {
     number: 3,
+    emoji: "3️⃣",
     title: "Activa tu inversión con tu asesor",
     description: "Completa el proceso con su acompañamiento.",
   },
   {
     number: 4,
+    emoji: "4️⃣",
     title: "Tu regalo se completa",
     description: "El remitente recibirá las instrucciones de pago.",
   },
@@ -31,77 +35,102 @@ const steps = [
 const SmartGiftStepper = ({ currentStep }: SmartGiftStepperProps) => {
   return (
     <div className="w-full">
-      <div className="mb-8 text-center">
+      <div className="mb-10 text-center">
         <h3 className="text-2xl md:text-3xl font-bold mb-2">Tus próximos pasos con Smart Gift</h3>
       </div>
 
-      <div className="space-y-4">
-        {steps.map((step, index) => {
-          const isCompleted = index < currentStep;
-          const isActive = index === currentStep;
-          const isFuture = index > currentStep;
-
-          return (
+      {/* Horizontal Stepper */}
+      <div className="relative">
+        {/* Connection Lines Container */}
+        <div className="absolute top-8 left-0 right-0 hidden md:flex items-center justify-between px-12">
+          {steps.slice(0, -1).map((_, index) => (
             <div
-              key={step.number}
-              className={cn(
-                "relative flex gap-4 p-6 rounded-2xl border-2 transition-all duration-300",
-                isCompleted && "bg-primary/10 border-primary/30",
-                isActive && "bg-card border-primary shadow-lg scale-[1.02]",
-                isFuture && "bg-muted/30 border-muted"
-              )}
+              key={index}
+              className="flex-1 h-1 mx-4"
             >
-              {/* Step Number/Icon */}
-              <div className="flex-shrink-0">
+              <div
+                className={cn(
+                  "h-full rounded-full transition-all duration-500",
+                  index < currentStep ? "bg-primary" : "bg-muted"
+                )}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Steps */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-4 relative">
+          {steps.map((step, index) => {
+            const isCompleted = index < currentStep;
+            const isActive = index === currentStep;
+            const isFuture = index > currentStep;
+
+            return (
+              <div
+                key={step.number}
+                className="flex flex-col items-center text-center relative"
+              >
+                {/* Step Circle */}
                 <div
                   className={cn(
-                    "w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all duration-300",
-                    isCompleted && "bg-primary text-white",
-                    isActive && "bg-secondary text-secondary-foreground shadow-md",
+                    "w-16 h-16 rounded-2xl flex items-center justify-center font-bold text-xl transition-all duration-500 shadow-lg z-10 relative",
+                    isCompleted && "bg-primary text-white scale-110",
+                    isActive && "bg-primary text-white scale-125 shadow-[0_0_20px_rgba(0,177,169,0.5)]",
                     isFuture && "bg-muted text-muted-foreground"
                   )}
                 >
                   {isCompleted ? (
-                    <CheckCircle2 className="h-6 w-6" />
+                    <Check className="h-8 w-8 stroke-[3]" />
                   ) : (
-                    <span>{step.number}</span>
+                    <span className="text-2xl">{step.number}</span>
+                  )}
+                  
+                  {/* Active Pulse Effect */}
+                  {isActive && (
+                    <div className="absolute inset-0 rounded-2xl bg-primary animate-ping opacity-20" />
                   )}
                 </div>
-              </div>
 
-              {/* Step Content */}
-              <div className="flex-1 min-w-0">
-                <h4
-                  className={cn(
-                    "font-bold text-lg mb-1",
-                    isCompleted && "text-primary",
-                    isActive && "text-foreground",
-                    isFuture && "text-muted-foreground"
-                  )}
-                >
-                  {step.title}
-                </h4>
-                <p
-                  className={cn(
-                    "text-sm",
-                    isCompleted && "text-primary/80",
-                    isActive && "text-muted-foreground",
-                    isFuture && "text-muted-foreground/60"
-                  )}
-                >
-                  {step.description}
-                </p>
-              </div>
-
-              {/* Active Indicator */}
-              {isActive && (
-                <div className="absolute -right-1 -top-1">
-                  <div className="w-6 h-6 rounded-full bg-secondary animate-pulse" />
+                {/* Step Content */}
+                <div className="mt-6 space-y-2">
+                  <h4
+                    className={cn(
+                      "font-bold text-base md:text-lg transition-colors duration-300",
+                      isCompleted && "text-primary",
+                      isActive && "text-primary",
+                      isFuture && "text-muted-foreground"
+                    )}
+                  >
+                    {step.title}
+                  </h4>
+                  <p
+                    className={cn(
+                      "text-sm leading-relaxed transition-colors duration-300",
+                      isCompleted && "text-muted-foreground",
+                      isActive && "text-foreground",
+                      isFuture && "text-muted-foreground/70"
+                    )}
+                  >
+                    {step.description}
+                  </p>
                 </div>
-              )}
-            </div>
-          );
-        })}
+
+                {/* Completion Badge */}
+                {isCompleted && (
+                  <div className="mt-2 text-xs font-semibold text-primary px-3 py-1 bg-primary/10 rounded-full">
+                    ✓ Completado
+                  </div>
+                )}
+                
+                {isActive && (
+                  <div className="mt-2 text-xs font-semibold text-primary px-3 py-1 bg-primary/10 rounded-full animate-pulse">
+                    En progreso
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
