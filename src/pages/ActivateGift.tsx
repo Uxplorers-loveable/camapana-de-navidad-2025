@@ -145,11 +145,6 @@ const ActivateGift = () => {
         
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="space-y-12 animate-fade-in">
-            {/* Stepper showing progress */}
-            <div className="bg-card rounded-3xl shadow-2xl p-8 md:p-12 border border-primary/10">
-              <SmartGiftStepper currentStep={2} showTitle={true} />
-            </div>
-
             {/* Hero Section */}
             <div className="text-center max-w-3xl mx-auto">
               <div className="relative inline-block mb-8">
@@ -170,6 +165,11 @@ const ActivateGift = () => {
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Papá Noel y Skandia te dan la bienvenida al futuro que estás construyendo. Este es el primer paso hacia tu libertad financiera.
               </p>
+            </div>
+
+            {/* Stepper showing progress */}
+            <div className="bg-card rounded-3xl shadow-2xl p-8 md:p-12 border border-primary/10">
+              <SmartGiftStepper currentStep={2} showTitle={true} />
             </div>
 
             {/* Learning Center */}
