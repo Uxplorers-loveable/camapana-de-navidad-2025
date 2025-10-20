@@ -50,26 +50,6 @@ const Home = () => {
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl">
                 Papá Noel y Skandia presentan los Smart Gifts: una nueva forma de regalar oportunidades.
               </p>
-                
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button 
-                  size="lg"
-                  variant="skandia"
-                  onClick={() => navigate("/crear-regalo")}
-                  className="text-base px-8"
-                >
-                  Crear mi Smart Gift
-                </Button>
-                
-                <Button 
-                  size="lg"
-                  variant="outline"
-                  className="text-base border-2"
-                  onClick={() => navigate("/activar")}
-                >
-                  Activar mi regalo
-                </Button>
-              </div>
             </div>
 
             {/* Right side - Hero image with decorative circle */}
@@ -98,7 +78,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Two Paths Section */}
       <section className="py-20 md:py-32 relative">
         {/* Decorative dots */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -108,34 +88,110 @@ const Home = () => {
         </div>
 
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-            {/* Card 1 */}
-            <div className="group bg-card rounded-3xl p-8 md:p-10 shadow-sm hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-primary/20">
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Gift className="h-7 w-7 text-primary" />
+          {/* Section Title */}
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-3xl md:text-5xl font-bold">Elige tu experiencia</h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Dos caminos hacia la libertad financiera
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+            {/* Card 1 - Crear Smart Gift */}
+            <div className="group relative bg-gradient-to-br from-primary/5 via-card to-card rounded-3xl p-8 md:p-12 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-primary/20 hover:border-primary/40 overflow-hidden">
+              {/* Decorative background element */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500"></div>
+              
+              <div className="relative space-y-6">
+                <div className="w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Gift className="h-10 w-10 text-primary" />
                 </div>
-                <div className="space-y-3 flex-1">
-                  <h3 className="text-2xl md:text-3xl font-bold">Regala con propósito</h3>
+                
+                <div className="space-y-4">
+                  <h3 className="text-3xl md:text-4xl font-bold">Crear mi Smart Gift</h3>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Cada Smart Gift es una inversión que crece con el tiempo. Elige el diseño, el monto y añade un mensaje personalizado.
+                    Regala una oportunidad de inversión. Personaliza el diseño, elige el monto y añade un mensaje especial. Un regalo que crece con el tiempo.
                   </p>
                 </div>
+
+                <div className="space-y-3 pt-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary text-sm font-bold">✓</span>
+                    </div>
+                    <p className="text-sm md:text-base">Elige diseño y monto personalizado</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary text-sm font-bold">✓</span>
+                    </div>
+                    <p className="text-sm md:text-base">Añade mensaje especial</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-primary text-sm font-bold">✓</span>
+                    </div>
+                    <p className="text-sm md:text-base">Entrega cuando quieras</p>
+                  </div>
+                </div>
+
+                <Button 
+                  size="lg"
+                  variant="skandia"
+                  onClick={() => navigate("/crear-regalo")}
+                  className="w-full text-base h-14 group-hover:scale-105 transition-transform"
+                >
+                  Comenzar a crear
+                </Button>
               </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="group bg-card rounded-3xl p-8 md:p-10 shadow-sm hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-primary/20">
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <TrendingUp className="h-7 w-7 text-primary" />
+            {/* Card 2 - Activar Regalo */}
+            <div className="group relative bg-gradient-to-br from-destructive/5 via-card to-card rounded-3xl p-8 md:p-12 shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-destructive/20 hover:border-destructive/40 overflow-hidden">
+              {/* Decorative background element */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-destructive/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500"></div>
+              
+              <div className="relative space-y-6">
+                <div className="w-20 h-20 rounded-2xl bg-destructive/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <TrendingUp className="h-10 w-10 text-destructive" />
                 </div>
-                <div className="space-y-3 flex-1">
-                  <h3 className="text-2xl md:text-3xl font-bold">Construye futuro</h3>
+                
+                <div className="space-y-4">
+                  <h3 className="text-3xl md:text-4xl font-bold">Activar mi regalo</h3>
                   <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                    Tu regalo se convierte en el primer paso hacia la libertad financiera. Un asesor Skandia guiará cada decisión.
+                    ¿Recibiste un Smart Gift? Actívalo aquí y comienza tu camino hacia la libertad financiera con asesoría personalizada.
                   </p>
                 </div>
+
+                <div className="space-y-3 pt-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-destructive text-sm font-bold">✓</span>
+                    </div>
+                    <p className="text-sm md:text-base">Activa tu código de regalo</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-destructive text-sm font-bold">✓</span>
+                    </div>
+                    <p className="text-sm md:text-base">Elige tu opción de inversión</p>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0">
+                      <span className="text-destructive text-sm font-bold">✓</span>
+                    </div>
+                    <p className="text-sm md:text-base">Recibe asesoría Skandia gratis</p>
+                  </div>
+                </div>
+
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  onClick={() => navigate("/activar")}
+                  className="w-full text-base h-14 border-2 border-destructive text-destructive hover:bg-destructive hover:text-white group-hover:scale-105 transition-all"
+                >
+                  Activar ahora
+                </Button>
               </div>
             </div>
           </div>
