@@ -45,16 +45,13 @@ const SmartGiftStepper = ({ currentStep, showTitle = false }: SmartGiftStepperPr
       {/* Horizontal Stepper */}
       <div className="relative">
         {/* Connection Lines Container */}
-        <div className="absolute top-8 left-0 right-0 hidden md:flex items-center justify-between px-12">
+        <div className="absolute top-4 left-0 right-0 hidden md:flex items-center justify-between px-12">
           {steps.slice(0, -1).map((_, index) => (
-            <div
-              key={index}
-              className="flex-1 h-1 mx-4"
-            >
+            <div key={index} className="flex-1 h-1 mx-4">
               <div
                 className={cn(
                   "h-full rounded-full transition-all duration-500",
-                  index < currentStep ? "bg-primary" : "bg-muted"
+                  index < currentStep ? "bg-primary" : "bg-muted",
                 )}
               />
             </div>
@@ -69,17 +66,14 @@ const SmartGiftStepper = ({ currentStep, showTitle = false }: SmartGiftStepperPr
             const isFuture = index > currentStep;
 
             return (
-              <div
-                key={step.number}
-                className="flex flex-col items-center text-center relative"
-              >
+              <div key={step.number} className="flex flex-col items-center text-center relative">
                 {/* Step Circle */}
                 <div
                   className={cn(
-                    "w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg transition-all duration-500 shadow-md z-10 relative",
+                    "w-12 h-12 rounded-x64 flex items-center justify-center font-bold text-lg transition-all duration-500 shadow-md z-10 relative",
                     isCompleted && "bg-primary text-white",
                     isActive && "bg-primary text-white shadow-[0_0_15px_rgba(0,177,169,0.4)]",
-                    isFuture && "bg-muted text-muted-foreground"
+                    isFuture && "bg-muted text-muted-foreground",
                   )}
                 >
                   {isCompleted ? (
@@ -87,11 +81,9 @@ const SmartGiftStepper = ({ currentStep, showTitle = false }: SmartGiftStepperPr
                   ) : (
                     <span className="text-lg">{step.number}</span>
                   )}
-                  
+
                   {/* Active Pulse Effect */}
-                  {isActive && (
-                    <div className="absolute inset-0 rounded-xl bg-primary animate-ping opacity-20" />
-                  )}
+                  {isActive && <div className="absolute inset-0 rounded-xl bg-primary animate-ping opacity-20" />}
                 </div>
 
                 {/* Step Content */}
@@ -101,7 +93,7 @@ const SmartGiftStepper = ({ currentStep, showTitle = false }: SmartGiftStepperPr
                       "font-bold text-sm md:text-base transition-colors duration-300",
                       isCompleted && "text-primary",
                       isActive && "text-primary",
-                      isFuture && "text-muted-foreground"
+                      isFuture && "text-muted-foreground",
                     )}
                   >
                     {step.title}
@@ -111,7 +103,7 @@ const SmartGiftStepper = ({ currentStep, showTitle = false }: SmartGiftStepperPr
                       "text-xs leading-relaxed transition-colors duration-300",
                       isCompleted && "text-muted-foreground",
                       isActive && "text-foreground",
-                      isFuture && "text-muted-foreground/70"
+                      isFuture && "text-muted-foreground/70",
                     )}
                   >
                     {step.description}
