@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import Snowfall from "@/components/Snowfall";
 import { Gift } from "lucide-react";
 
 const Home = () => {
@@ -8,7 +7,6 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Snowfall />
       
       {/* Hero Section - Inspired by Apple */}
       <section className="relative overflow-hidden">

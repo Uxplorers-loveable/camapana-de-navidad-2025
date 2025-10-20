@@ -8,95 +8,88 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Skandia Brand Colors */
-    --skandia-teal: 182 65% 32%;
-    --skandia-teal-light: 182 55% 45%;
-    --skandia-teal-dark: 182 75% 22%;
-    
-    /* Christmas Festive Colors */
-    --christmas-red: 0 85% 55%;
-    --christmas-gold: 45 95% 60%;
-    --christmas-green: 152 65% 35%;
+    /* Skandia Brand Colors - Vibrant Green */
+    --skandia-green: 147 100% 42%;
+    --skandia-green-light: 147 100% 55%;
+    --skandia-green-dark: 147 100% 32%;
     
     /* Background & Surfaces */
-    --background: 30 20% 98%;
-    --foreground: 182 35% 15%;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 20%;
     
     --card: 0 0% 100%;
-    --card-foreground: 182 35% 15%;
+    --card-foreground: 240 10% 20%;
     
     --popover: 0 0% 100%;
-    --popover-foreground: 182 35% 15%;
+    --popover-foreground: 240 10% 20%;
     
-    /* Primary - Skandia Teal */
-    --primary: 182 65% 32%;
+    /* Primary - Skandia Green */
+    --primary: 147 100% 42%;
     --primary-foreground: 0 0% 100%;
     
-    /* Secondary - Christmas Gold */
-    --secondary: 45 95% 60%;
-    --secondary-foreground: 182 35% 15%;
+    /* Secondary */
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 10% 20%;
     
     /* Muted */
-    --muted: 30 15% 95%;
-    --muted-foreground: 182 20% 45%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
     
-    /* Accent - Christmas Red */
-    --accent: 0 85% 55%;
+    /* Accent */
+    --accent: 147 100% 42%;
     --accent-foreground: 0 0% 100%;
     
     /* Destructive */
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     
     /* Borders & Inputs */
-    --border: 182 20% 88%;
-    --input: 182 20% 88%;
-    --ring: 182 65% 32%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 147 100% 42%;
     
     --radius: 0.75rem;
     
     /* Gradients */
-    --gradient-festive: linear-gradient(135deg, hsl(var(--christmas-gold)) 0%, hsl(var(--christmas-red)) 100%);
-    --gradient-teal: linear-gradient(135deg, hsl(var(--skandia-teal-light)) 0%, hsl(var(--skandia-teal-dark)) 100%);
-    --gradient-hero: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(182 25% 96%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--skandia-green-light)) 0%, hsl(var(--skandia-green)) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(240 5% 98%) 100%);
     
     /* Shadows */
-    --shadow-festive: 0 10px 40px -10px hsl(var(--christmas-gold) / 0.3);
-    --shadow-card: 0 4px 20px -2px hsl(182 35% 15% / 0.08);
-    --shadow-glow: 0 0 40px hsl(var(--christmas-gold) / 0.4);
+    --shadow-card: 0 2px 12px -2px hsl(240 10% 20% / 0.06);
+    --shadow-elevated: 0 8px 24px -4px hsl(240 10% 20% / 0.1);
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 182 45% 8%;
-    --foreground: 30 20% 98%;
+    --background: 240 10% 8%;
+    --foreground: 0 0% 98%;
     
-    --card: 182 40% 12%;
-    --card-foreground: 30 20% 98%;
+    --card: 240 10% 12%;
+    --card-foreground: 0 0% 98%;
     
-    --popover: 182 40% 12%;
-    --popover-foreground: 30 20% 98%;
+    --popover: 240 10% 12%;
+    --popover-foreground: 0 0% 98%;
     
-    --primary: 182 55% 45%;
-    --primary-foreground: 182 35% 15%;
+    --primary: 147 100% 42%;
+    --primary-foreground: 0 0% 100%;
     
-    --secondary: 45 85% 55%;
-    --secondary-foreground: 182 35% 15%;
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 0 0% 98%;
     
-    --muted: 182 35% 18%;
-    --muted-foreground: 182 15% 65%;
+    --muted: 240 4% 16%;
+    --muted-foreground: 240 5% 65%;
     
-    --accent: 0 75% 50%;
+    --accent: 147 100% 42%;
     --accent-foreground: 0 0% 100%;
     
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 182 30% 20%;
-    --input: 182 30% 20%;
-    --ring: 182 55% 45%;
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 147 100% 42%;
   }
 }
 
@@ -115,44 +108,6 @@ All colors MUST be HSL.
 }
 
 @layer components {
-  /* Festive Button Variant */
-  .btn-festive {
-    @apply bg-gradient-to-r from-[hsl(var(--christmas-gold))] to-[hsl(var(--christmas-red))] text-white font-semibold shadow-[var(--shadow-festive)] hover:scale-105 transition-transform duration-300;
-  }
-  
-  /* Glow Effect */
-  .glow-effect {
-    @apply animate-pulse shadow-[var(--shadow-glow)];
-  }
-  
-  /* Snowfall Animation */
-  @keyframes snowfall {
-    0% {
-      transform: translateY(-10vh) translateX(0);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(110vh) translateX(100px);
-      opacity: 0;
-    }
-  }
-  
-  .snowflake {
-    position: fixed;
-    top: -10vh;
-    z-index: 9999;
-    user-select: none;
-    pointer-events: none;
-    animation: snowfall linear infinite;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  
   /* Card Reveal Animation */
   @keyframes cardReveal {
     from {
@@ -167,15 +122,5 @@ All colors MUST be HSL.
   
   .card-reveal {
     animation: cardReveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-  }
-  
-  /* Sparkle Effect */
-  @keyframes sparkle {
-    0%, 100% { opacity: 0; transform: scale(0); }
-    50% { opacity: 1; transform: scale(1); }
-  }
-  
-  .sparkle {
-    animation: sparkle 2s ease-in-out infinite;
   }
 }

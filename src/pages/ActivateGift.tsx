@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GiftCard from "@/components/GiftCard";
-import Snowfall from "@/components/Snowfall";
 import SmartGiftStepper from "@/components/SmartGiftStepper";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -93,29 +92,29 @@ const ActivateGift = () => {
   // Narrative intro screen
   if (step === "narrative") {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-16">
+      <div className="min-h-screen bg-gradient-subtle py-16">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="space-y-8 text-center">
             <div className="space-y-4">
-              <h1 className="text-4xl md:text-5xl font-bold animate-fade-in">
+              <h1 className="text-4xl md:text-5xl font-bold">
                 🎁 ¡Has recibido un Smart Gift!
               </h1>
-              <p className="text-2xl text-muted-foreground animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <p className="text-2xl text-muted-foreground">
                 Papá Noel y tus seres queridos creen en tu futuro.
               </p>
             </div>
 
             <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 md:p-12 space-y-6 text-left">
-              <p className="text-lg leading-relaxed animate-fade-in" style={{ animationDelay: '0.4s' }}>
+              <p className="text-lg leading-relaxed">
                 Esta Navidad, el mejor CEO del mundo y Skandia crearon regalos que crecen contigo.
               </p>
-              <p className="text-lg leading-relaxed animate-fade-in" style={{ animationDelay: '0.6s' }}>
+              <p className="text-lg leading-relaxed">
                 Esta Smart Gift es más que una tarjeta: <span className="font-semibold text-primary">es el primer paso hacia tu libertad financiera.</span>
               </p>
-              <p className="text-lg leading-relaxed animate-fade-in" style={{ animationDelay: '0.8s' }}>
+              <p className="text-lg leading-relaxed">
                 Aquí podrás activarla, descubrir qué puedes lograr con ella y recibir asesoría personalizada para hacerla crecer.
               </p>
-              <div className="pt-4 border-t animate-fade-in" style={{ animationDelay: '1s' }}>
+              <div className="pt-4 border-t">
                 <p className="text-xl font-semibold text-center">
                   🌱 No estás recibiendo un regalo. Estás comenzando una historia.
                 </p>
@@ -126,8 +125,6 @@ const ActivateGift = () => {
               size="lg"
               variant="skandia"
               onClick={() => setStep("codeEntry")}
-              className="animate-fade-in"
-              style={{ animationDelay: '1.2s' }}
             >
               Descubre tu regalo
             </Button>
@@ -137,11 +134,10 @@ const ActivateGift = () => {
     );
   }
 
-  // Success screen with snowfall - NEW MODERN LAYOUT
+  // Success screen - NEW MODERN LAYOUT
   if (step === "success") {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background via-[hsl(182,25%,96%)] to-primary/5 py-12">
-        <Snowfall />
+      <div className="min-h-screen bg-gradient-subtle py-12">
         
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="space-y-12 animate-fade-in">
@@ -154,7 +150,7 @@ const ActivateGift = () => {
                 </div>
               </div>
               
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary via-primary to-[hsl(182,70%,35%)] bg-clip-text text-transparent">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 text-primary">
                 ¡Felicidades!
               </h1>
               
@@ -173,8 +169,8 @@ const ActivateGift = () => {
             </div>
 
             {/* Learning Center */}
-            <div className="bg-gradient-to-br from-card to-primary/5 rounded-3xl shadow-2xl overflow-hidden border border-primary/10">
-              <div className="bg-gradient-to-r from-primary to-[hsl(182,70%,35%)] p-8 md:p-10 text-white">
+            <div className="bg-card rounded-3xl shadow-[var(--shadow-elevated)] overflow-hidden border border-border">
+              <div className="bg-primary p-8 md:p-10 text-white">
                 <div className="flex items-center gap-4 mb-3">
                   <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
                     <span className="text-4xl">📚</span>
@@ -242,7 +238,7 @@ const ActivateGift = () => {
   // Activation code entry screen
   if (step === "codeEntry") {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-12 flex items-center">
+      <div className="min-h-screen bg-gradient-subtle py-12 flex items-center">
         <div className="container mx-auto px-4 max-w-xl">
           <Button
             variant="ghost"
@@ -320,7 +316,7 @@ const ActivateGift = () => {
   // Personal data entry screen
   if (step === "personalData") {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
+      <div className="min-h-screen bg-gradient-subtle py-8">
         <div className="container mx-auto px-4 max-w-2xl">
           <Button
             variant="ghost"
@@ -403,7 +399,7 @@ const ActivateGift = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
+    <div className="min-h-screen bg-gradient-subtle py-8">
       <div className="container mx-auto px-4 max-w-4xl">
         <Button
           variant="ghost"
