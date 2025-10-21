@@ -49,7 +49,7 @@ const ActivateGiftHome = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button size="lg" variant="outline" className="text-base border-2" onClick={() => navigate("/activar")}>
+                <Button size="lg" variant="skandia" className="text-base" onClick={() => navigate("/activar")}>
                   Activar mi regalo
                 </Button>
               </div>
