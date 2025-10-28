@@ -185,29 +185,56 @@ const ActivateGift = () => {
               </div>
 
               <div className="p-8 md:p-10">
-                <div className="grid md:grid-cols-3 gap-4 mb-6">
-                  <a href="https://channel.skandia.com.co/path-player?courseid=mesa-redonda&unit=68d5ae516f0360a20408338cUnit" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      <span className="text-3xl">📊</span>
+                <div className="grid md:grid-cols-3 gap-6 mb-6">
+                  <a href="https://channel.skandia.com.co/path-player?courseid=mesa-redonda&unit=68d5ae516f0360a20408338cUnit" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div className="aspect-video bg-gray-100 relative overflow-hidden">
+                      <iframe 
+                        src="https://channel.skandia.com.co/path-player?courseid=mesa-redonda&unit=68d5ae516f0360a20408338cUnit" 
+                        className="w-full h-full"
+                        title="Introducción a los fondos de inversión"
+                      />
                     </div>
-                    <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">Introducción a los fondos de inversión</h3>
-                    <p className="text-sm text-muted-foreground">Aprende los conceptos básicos de inversión</p>
+                    <div className="p-6">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span className="text-3xl">📊</span>
+                      </div>
+                      <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">Introducción a los fondos de inversión</h3>
+                      <p className="text-sm text-muted-foreground">Aprende los conceptos básicos de inversión</p>
+                    </div>
                   </a>
 
-                  <a href="#" className="group bg-white rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      <span className="text-3xl">💡</span>
+                  <a href="https://channel.skandia.com.co/path-player?courseid=desencriptando-el-mundo-bitcoin&unit=6750bbcbaab85af6c40b7684Unit" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div className="aspect-video bg-gray-100 relative overflow-hidden">
+                      <iframe 
+                        src="https://channel.skandia.com.co/path-player?courseid=desencriptando-el-mundo-bitcoin&unit=6750bbcbaab85af6c40b7684Unit" 
+                        className="w-full h-full"
+                        title="Cómo diversificar tu portafolio"
+                      />
                     </div>
-                    <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">Cómo diversificar tu portafolio</h3>
-                    <p className="text-sm text-muted-foreground">Estrategias para proteger tu inversión</p>
+                    <div className="p-6">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span className="text-3xl">💡</span>
+                      </div>
+                      <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">Cómo diversificar tu portafolio</h3>
+                      <p className="text-sm text-muted-foreground">Estrategias para proteger tu inversión</p>
+                    </div>
                   </a>
 
-                  <a href="#" className="group bg-white rounded-xl p-6 border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      <span className="text-3xl">📈</span>
+                  <a href="https://channel.skandia.com.co/path-player?courseid=back-to-skool-5&unit=67d7a99a83630114390a8a27Unit" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
+                    <div className="aspect-video bg-gray-100 relative overflow-hidden">
+                      <iframe 
+                        src="https://channel.skandia.com.co/path-player?courseid=back-to-skool-5&unit=67d7a99a83630114390a8a27Unit" 
+                        className="w-full h-full"
+                        title="Entendiendo el riesgo vs rentabilidad"
+                      />
                     </div>
-                    <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">Entendiendo el riesgo vs rentabilidad</h3>
-                    <p className="text-sm text-muted-foreground">Balance entre seguridad y crecimiento</p>
+                    <div className="p-6">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <span className="text-3xl">📈</span>
+                      </div>
+                      <h3 className="font-bold mb-2 group-hover:text-primary transition-colors">Entendiendo el riesgo vs rentabilidad</h3>
+                      <p className="text-sm text-muted-foreground">Balance entre seguridad y crecimiento</p>
+                    </div>
                   </a>
                 </div>
 
