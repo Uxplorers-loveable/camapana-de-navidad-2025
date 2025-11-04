@@ -52,19 +52,16 @@ const ActivateGift = () => {
           <div className="space-y-8 text-center">
             <div className="space-y-4">
               <h1 className="text-4xl md:text-5xl font-bold">
-                🎁 ¡Has recibido un Smart Gift!
+                Hola {giftData.to}, {giftData.from} te ha enviado un regalo
               </h1>
-              <p className="text-2xl text-muted-foreground">
-                Papá Noel y tus seres queridos creen en tu futuro.
+              <p className="text-2xl font-semibold text-primary">
+                Una Smart Gift para impulsar tu futuro
               </p>
             </div>
 
             <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 md:p-12 space-y-6 text-left">
               <p className="text-lg leading-relaxed">
-                Esta Navidad, el mejor CEO del mundo y Skandia crearon regalos que crecen contigo.
-              </p>
-              <p className="text-lg leading-relaxed">
-                Esta Smart Gift es más que un regalo: <span className="font-semibold text-primary">es el primer paso hacia tu libertad financiera.</span>
+                Esta navidad {giftData.from} se ha unido con Papá Noel y Skandia para darte un regalo que crece contigo. Esta Smart Gift es más que un regalo: <span className="font-semibold text-primary">es el primer paso hacia tu libertad financiera.</span>
               </p>
               <p className="text-lg leading-relaxed">
                 Aquí podrás activarla, descubrir qué puedes lograr con ella y recibir asesoría personalizada para hacerla crecer.
