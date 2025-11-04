@@ -478,8 +478,15 @@ const ActivateGift = () => {
               </div>
 
               {/* CTA text */}
-              <p className="text-center text-lg font-semibold text-primary">
-                Comienza hoy a construir tu tranquilidad financiera.
+              <p className="text-center text-lg">
+                <a 
+                  href="/path-to-your-pdf.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline font-semibold"
+                >
+                  Consulta los Términos y Condiciones del FIC Efectivo
+                </a>
               </p>
             </div>
 
