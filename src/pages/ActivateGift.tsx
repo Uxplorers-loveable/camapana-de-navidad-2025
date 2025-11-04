@@ -27,8 +27,13 @@ const ActivateGift = () => {
   const searchParams = new URLSearchParams(location.search);
   const giftId = searchParams.get('gift');
   
+  console.log('Gift ID from URL:', giftId);
+  console.log('Current URL:', location.search);
+  
   // Retrieve gift data from localStorage
   const storedData = giftId ? localStorage.getItem(`gift_${giftId}`) : null;
+  console.log('Stored data:', storedData);
+  
   const giftData = storedData ? JSON.parse(storedData) : {
     template: 2 as 1 | 2 | 3,
     amount: "500.000",
@@ -36,6 +41,8 @@ const ActivateGift = () => {
     from: "Papá Noel",
     to: "María"
   };
+  
+  console.log('Gift data being used:', giftData);
   const handleCodeSubmit = () => {
     if (!activationData.code) {
       toast.error("Por favor ingresa tu código de activación");

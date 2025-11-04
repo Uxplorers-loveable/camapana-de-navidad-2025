@@ -104,9 +104,16 @@ const CreateGift = () => {
       occasion: formData.occasion,
       template: formData.template,
     };
+    
+    console.log('Saving gift data with ID:', giftId, giftData);
     localStorage.setItem(`gift_${giftId}`, JSON.stringify(giftData));
     
+    // Verify it was saved
+    const saved = localStorage.getItem(`gift_${giftId}`);
+    console.log('Verified saved data:', saved);
+    
     const link = `${window.location.origin}/activar?gift=${giftId}`;
+    console.log('Generated link:', link);
     setShareableLink(link);
     setCurrentStep(4); // Go to final success screen
   };
