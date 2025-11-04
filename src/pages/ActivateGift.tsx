@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { ArrowLeft, Sparkles, Gift } from "lucide-react";
 import skandiaChannelPreview from "@/assets/skandia-channel-preview.jpg";
-
 const ActivateGift = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState<"narrative" | "codeEntry" | "personalData" | "intro" | "benefits" | "success">("narrative");
@@ -17,7 +16,7 @@ const ActivateGift = () => {
     name: "",
     phone: "",
     email: "",
-    dataConsent: false,
+    dataConsent: false
   });
 
   // Datos de ejemplo del regalo recibido
@@ -26,9 +25,8 @@ const ActivateGift = () => {
     amount: "500.000,00",
     message: "Este regalo es el comienzo de tu libertad financiera. ¡Que crezca contigo!",
     from: "Papá Noel & Familia",
-    to: "Ti",
+    to: "Ti"
   };
-
   const handleCodeSubmit = () => {
     if (!activationData.code) {
       toast.error("Por favor ingresa tu código de activación");
@@ -36,7 +34,6 @@ const ActivateGift = () => {
     }
     setStep("personalData");
   };
-
   const handlePersonalDataSubmit = () => {
     if (!activationData.name || !activationData.email || !activationData.phone || !activationData.dataConsent) {
       toast.error("Por favor completa todos los campos y acepta el tratamiento de datos");
@@ -47,8 +44,7 @@ const ActivateGift = () => {
 
   // Narrative intro screen
   if (step === "narrative") {
-    return (
-      <div className="min-h-screen bg-gradient-subtle py-16">
+    return <div className="min-h-screen bg-gradient-subtle py-16">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="space-y-8 text-center">
             <div className="space-y-4">
@@ -77,23 +73,17 @@ const ActivateGift = () => {
               </div>
             </div>
 
-            <Button 
-              size="lg"
-              variant="skandia"
-              onClick={() => setStep("codeEntry")}
-            >
+            <Button size="lg" variant="skandia" onClick={() => setStep("codeEntry")}>
               Descubre tu regalo
             </Button>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 
   // Success screen
   if (step === "success") {
-    return (
-      <div className="min-h-screen bg-gradient-subtle py-12">
+    return <div className="min-h-screen bg-gradient-subtle py-12">
         
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="space-y-12 animate-fade-in">
@@ -144,11 +134,7 @@ const ActivateGift = () => {
                 <div className="grid md:grid-cols-3 gap-6 mb-6">
                   <a href="https://channel.skandia.com.co/path-player?courseid=mesa-redonda&unit=68d5ae516f0360a20408338cUnit" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
                     <div className="aspect-video bg-gray-100 relative overflow-hidden">
-                      <img 
-                        src={skandiaChannelPreview} 
-                        alt="Skandia Channel Preview"
-                        className="w-full h-full object-cover"
-                      />
+                      <img src={skandiaChannelPreview} alt="Skandia Channel Preview" className="w-full h-full object-cover" />
                     </div>
                     <div className="p-6">
                       <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -161,11 +147,7 @@ const ActivateGift = () => {
 
                   <a href="https://channel.skandia.com.co/path-player?courseid=desencriptando-el-mundo-bitcoin&unit=6750bbcbaab85af6c40b7684Unit" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
                     <div className="aspect-video bg-gray-100 relative overflow-hidden">
-                      <img 
-                        src={skandiaChannelPreview} 
-                        alt="Skandia Channel Preview"
-                        className="w-full h-full object-cover"
-                      />
+                      <img src={skandiaChannelPreview} alt="Skandia Channel Preview" className="w-full h-full object-cover" />
                     </div>
                     <div className="p-6">
                       <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -178,11 +160,7 @@ const ActivateGift = () => {
 
                   <a href="https://channel.skandia.com.co/path-player?courseid=back-to-skool-5&unit=67d7a99a83630114390a8a27Unit" target="_blank" rel="noopener noreferrer" className="group bg-white rounded-xl overflow-hidden border-2 border-transparent hover:border-primary transition-all duration-300 shadow-md hover:shadow-xl">
                     <div className="aspect-video bg-gray-100 relative overflow-hidden">
-                      <img 
-                        src={skandiaChannelPreview} 
-                        alt="Skandia Channel Preview"
-                        className="w-full h-full object-cover"
-                      />
+                      <img src={skandiaChannelPreview} alt="Skandia Channel Preview" className="w-full h-full object-cover" />
                     </div>
                     <div className="p-6">
                       <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
@@ -203,31 +181,20 @@ const ActivateGift = () => {
             </div>
 
             <div className="text-center">
-              <Button 
-                size="lg"
-                variant="skandia"
-                onClick={() => navigate("/")}
-                className="text-lg px-12 h-14"
-              >
+              <Button size="lg" variant="skandia" onClick={() => navigate("/")} className="text-lg px-12 h-14">
                 Volver al inicio
               </Button>
             </div>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 
   // Activation code entry screen
   if (step === "codeEntry") {
-    return (
-      <div className="min-h-screen bg-gradient-subtle py-12 flex items-center">
+    return <div className="min-h-screen bg-gradient-subtle py-12 flex items-center">
         <div className="container mx-auto px-4 max-w-xl">
-          <Button
-            variant="ghost"
-            onClick={() => setStep("narrative")}
-            className="mb-8"
-          >
+          <Button variant="ghost" onClick={() => setStep("narrative")} className="mb-8">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Volver
           </Button>
@@ -252,13 +219,10 @@ const ActivateGift = () => {
             <div className="space-y-6">
               <div className="space-y-3">
                 <Label htmlFor="code" className="text-base font-semibold">Código de activación</Label>
-                <Input
-                  id="code"
-                  placeholder="Ingresa tu código aquí"
-                  value={activationData.code}
-                  onChange={(e) => setActivationData(prev => ({ ...prev, code: e.target.value }))}
-                  className="text-xl tracking-wider text-center h-14"
-                />
+                <Input id="code" placeholder="Ingresa tu código aquí" value={activationData.code} onChange={e => setActivationData(prev => ({
+                ...prev,
+                code: e.target.value
+              }))} className="text-xl tracking-wider text-center h-14" />
                 <p className="text-sm text-muted-foreground text-center">
                   Deberías haber recibido este código por email o WhatsApp
                 </p>
@@ -280,32 +244,21 @@ const ActivateGift = () => {
                 </div>
               </div>
 
-              <Button 
-                size="lg"
-                variant="skandia"
-                className="w-full h-14 text-lg"
-                onClick={handleCodeSubmit}
-              >
+              <Button size="lg" variant="skandia" className="w-full h-14 text-lg" onClick={handleCodeSubmit}>
                 <Gift className="mr-2 h-5 w-5" />
                 Activar mi Smart Gift
               </Button>
             </div>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 
   // Personal data entry screen
   if (step === "personalData") {
-    return (
-      <div className="min-h-screen bg-gradient-subtle py-8">
+    return <div className="min-h-screen bg-gradient-subtle py-8">
         <div className="container mx-auto px-4 max-w-2xl">
-          <Button
-            variant="ghost"
-            onClick={() => setStep("codeEntry")}
-            className="mb-6"
-          >
+          <Button variant="ghost" onClick={() => setStep("codeEntry")} className="mb-6">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Volver
           </Button>
@@ -323,82 +276,56 @@ const ActivateGift = () => {
             <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 space-y-6">
               <div>
                 <Label htmlFor="name">Nombre completo *</Label>
-                <Input
-                  id="name"
-                  placeholder="Tu nombre completo"
-                  value={activationData.name}
-                  onChange={(e) => setActivationData(prev => ({ ...prev, name: e.target.value }))}
-                />
+                <Input id="name" placeholder="Tu nombre completo" value={activationData.name} onChange={e => setActivationData(prev => ({
+                ...prev,
+                name: e.target.value
+              }))} />
               </div>
 
               <div>
                 <Label htmlFor="phone">Número de celular *</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="+57 300 123 4567"
-                  value={activationData.phone}
-                  onChange={(e) => setActivationData(prev => ({ ...prev, phone: e.target.value }))}
-                />
+                <Input id="phone" type="tel" placeholder="+57 300 123 4567" value={activationData.phone} onChange={e => setActivationData(prev => ({
+                ...prev,
+                phone: e.target.value
+              }))} />
               </div>
 
               <div>
                 <Label htmlFor="email">Correo electrónico *</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="tu@email.com"
-                  value={activationData.email}
-                  onChange={(e) => setActivationData(prev => ({ ...prev, email: e.target.value }))}
-                />
+                <Input id="email" type="email" placeholder="tu@email.com" value={activationData.email} onChange={e => setActivationData(prev => ({
+                ...prev,
+                email: e.target.value
+              }))} />
               </div>
 
               <div className="flex items-start gap-3 pt-2">
-                <input
-                  type="checkbox"
-                  id="dataConsent"
-                  checked={activationData.dataConsent}
-                  onChange={(e) => setActivationData(prev => ({ ...prev, dataConsent: e.target.checked }))}
-                  className="mt-1"
-                />
+                <input type="checkbox" id="dataConsent" checked={activationData.dataConsent} onChange={e => setActivationData(prev => ({
+                ...prev,
+                dataConsent: e.target.checked
+              }))} className="mt-1" />
                 <Label htmlFor="dataConsent" className="font-normal text-sm cursor-pointer">
                   Autorizo el uso de mis datos para la activación de mi Smart Gift conforme a la política de privacidad.
                 </Label>
               </div>
 
-              <Button 
-                size="lg"
-                variant="skandia"
-                className="w-full"
-                onClick={handlePersonalDataSubmit}
-              >
+              <Button size="lg" variant="skandia" className="w-full" onClick={handlePersonalDataSubmit}>
                 Continuar
               </Button>
             </div>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="min-h-screen bg-gradient-subtle py-8">
+  return <div className="min-h-screen bg-gradient-subtle py-8">
       <div className="container mx-auto px-4 max-w-4xl">
-        <Button
-          variant="ghost"
-          onClick={() => {
-            if (step === "intro") setStep("personalData");
-            else if (step === "benefits") setStep("intro");
-            else navigate("/");
-          }}
-          className="mb-6"
-        >
+        <Button variant="ghost" onClick={() => {
+        if (step === "intro") setStep("personalData");else if (step === "benefits") setStep("intro");else navigate("/");
+      }} className="mb-6">
           <ArrowLeft className="mr-2 h-4 w-4" />
           Volver
         </Button>
 
-        {step === "intro" && (
-          <div className="space-y-8 animate-fade-in">
+        {step === "intro" && <div className="space-y-8 animate-fade-in">
             <div className="text-center">
               <h1 className="text-3xl md:text-4xl font-bold mb-4">
                 Tu Smart Gift
@@ -415,20 +342,14 @@ const ActivateGift = () => {
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/20 rounded-full text-sm font-medium">
                   ⏰ Tienes 30 días para activar tu regalo
                 </div>
-                <Button 
-                  size="lg"
-                  variant="skandia"
-                  onClick={() => setStep("benefits")}
-                >
+                <Button size="lg" variant="skandia" onClick={() => setStep("benefits")}>
                   Activar mi Smart Gift
                 </Button>
               </div>
             </div>
-          </div>
-        )}
+          </div>}
 
-        {step === "benefits" && (
-          <div className="space-y-12 animate-fade-in max-w-5xl mx-auto">
+        {step === "benefits" && <div className="space-y-12 animate-fade-in max-w-5xl mx-auto">
             {/* Hero Section */}
             <div className="text-center space-y-6 pt-8">
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-4">
@@ -436,9 +357,7 @@ const ActivateGift = () => {
               </div>
               
               <div className="space-y-4">
-                <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-                  Lo que podrás lograr con tu<br />Smart Gift
-                </h2>
+                
                 
                 <div className="max-w-2xl mx-auto space-y-3">
                   <p className="text-2xl md:text-3xl font-semibold text-primary">
@@ -456,9 +375,7 @@ const ActivateGift = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-3xl blur-xl"></div>
               <div className="relative bg-card rounded-3xl shadow-xl border border-primary/20 p-8 md:p-12">
                 <div className="space-y-6 text-center max-w-3xl mx-auto">
-                  <p className="text-lg md:text-xl leading-relaxed">
-                    <span className="font-semibold">Papá Noel y Skandia</span> crearon los Smart Gifts para regalar tranquilidad.
-                  </p>
+                  
                   <p className="text-lg md:text-xl leading-relaxed">
                     Al activar el tuyo, estarás abriendo tu <span className="font-semibold text-primary">fondo de emergencias</span>, un espacio donde tu dinero crece sin riesgos y te respalda ante cualquier imprevisto.
                   </p>
@@ -557,23 +474,15 @@ const ActivateGift = () => {
 
             {/* CTA Section */}
             <div className="text-center space-y-4 py-8">
-              <Button 
-                size="lg"
-                variant="skandia"
-                onClick={() => setStep("success")}
-                className="text-lg px-12 h-14 shadow-lg hover:shadow-xl"
-              >
+              <Button size="lg" variant="skandia" onClick={() => setStep("success")} className="text-lg px-12 h-14 shadow-lg hover:shadow-xl">
                 Iniciar vinculación a mi fondo
               </Button>
               <p className="text-sm text-muted-foreground max-w-md mx-auto">
                 Empieza hoy tu fondo de emergencias y convierte tu regalo en tranquilidad financiera.
               </p>
             </div>
-          </div>
-        )}
+          </div>}
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default ActivateGift;
