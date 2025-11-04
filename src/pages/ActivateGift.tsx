@@ -98,69 +98,13 @@ const ActivateGift = () => {
               </div>
             </div>
 
-            {/* Title */}
-            <div className="space-y-4">
-              <h1 className="text-3xl md:text-5xl font-bold text-primary">
-                ¡Tu historia continúa desde tu celular!
-              </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
-                Este es el momento que has estado esperando
+            {/* Message */}
+            <div className="space-y-6">
+              <p className="text-2xl md:text-3xl leading-relaxed">
+                💌 Te enviamos un enlace para continuar tu proceso de vinculación.
               </p>
-            </div>
-
-            {/* Content */}
-            <div className="bg-primary/5 rounded-2xl p-8 space-y-6 border-2 border-primary/20">
-              <p className="text-lg leading-relaxed">
-                Papá Noel y Skandia han preparado algo especial: <span className="font-semibold text-primary">un proceso súper rápido y sencillo</span> para completar tu vinculación.
-              </p>
-              
-              <div className="space-y-4 text-left">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl">⚡</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Rápido y simple</h3>
-                    <p className="text-muted-foreground">Solo te tomará unos minutos desde tu celular</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl">🔒</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Seguro y protegido</h3>
-                    <p className="text-muted-foreground">Tu información está completamente protegida</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <span className="text-2xl">🎯</span>
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg mb-1">Paso a paso</h3>
-                    <p className="text-muted-foreground">Te guiaremos en cada momento del proceso</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Instructions */}
-            <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-6">
-              <p className="text-base font-semibold text-amber-900 mb-2">
-                📩 Revisa tu WhatsApp y tu correo
-              </p>
-              <p className="text-sm text-amber-800">
-                Te hemos enviado un enlace para continuar tu proceso de vinculación. ¡Es momento de convertir tu regalo en realidad!
-              </p>
-            </div>
-
-            {/* Footer message */}
-            <div className="pt-6 border-t border-border">
-              <p className="text-lg text-muted-foreground italic">
-                Tu fondo de emergencias te está esperando. 🌱
+              <p className="text-2xl md:text-3xl leading-relaxed font-semibold text-primary">
+                ¡Es momento de hacer realidad tu regalo! 🎁
               </p>
             </div>
 
