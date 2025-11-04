@@ -5,12 +5,13 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import GiftCard from "@/components/GiftCard";
 import SmartGiftStepper from "@/components/SmartGiftStepper";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import { ArrowLeft, Sparkles, Gift } from "lucide-react";
 import skandiaChannelPreview from "@/assets/skandia-channel-preview.jpg";
 const ActivateGift = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [step, setStep] = useState<"narrative" | "codeEntry" | "personalData" | "intro" | "benefits" | "mobileRedirect" | "success">("narrative");
   const [activationData, setActivationData] = useState({
     code: "",
@@ -22,13 +23,18 @@ const ActivateGift = () => {
     ficInfoAccepted: false
   });
 
-  // Datos de ejemplo del regalo recibido
-  const giftData = {
+  // Get gift ID from URL and retrieve gift data
+  const searchParams = new URLSearchParams(location.search);
+  const giftId = searchParams.get('gift');
+  
+  // Retrieve gift data from localStorage
+  const storedData = giftId ? localStorage.getItem(`gift_${giftId}`) : null;
+  const giftData = storedData ? JSON.parse(storedData) : {
     template: 2 as 1 | 2 | 3,
-    amount: "500.000,00",
+    amount: "500.000",
     message: "Este regalo es el comienzo de tu libertad financiera. ¡Que crezca contigo!",
-    from: "Papá Noel & Familia",
-    to: "Ti"
+    from: "Papá Noel",
+    to: "María"
   };
   const handleCodeSubmit = () => {
     if (!activationData.code) {

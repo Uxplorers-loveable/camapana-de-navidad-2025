@@ -94,6 +94,18 @@ const CreateGift = () => {
   const handleSubmit = () => {
     // Generate shareable link (in a real app, this would be an API call)
     const giftId = Math.random().toString(36).substring(2, 15);
+    
+    // Store gift data in localStorage
+    const giftData = {
+      from: formData.from,
+      to: formData.to,
+      amount: formData.amount,
+      message: formData.message,
+      occasion: formData.occasion,
+      template: formData.template,
+    };
+    localStorage.setItem(`gift_${giftId}`, JSON.stringify(giftData));
+    
     const link = `${window.location.origin}/activar?gift=${giftId}`;
     setShareableLink(link);
     setCurrentStep(4); // Go to final success screen
