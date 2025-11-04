@@ -398,105 +398,89 @@ const ActivateGift = () => {
               </div>
               
               <div className="space-y-4">
+                <h2 className="text-2xl font-semibold text-primary md:text-3xl">
+                  🎯 Tu fondo, gestionado por expertos
+                </h2>
                 
-                
-                <div className="max-w-2xl mx-auto space-y-3">
-                  <p className="text-2xl font-semibold text-primary md:text-4xl">
-                    Tu Smart Gift se convierte en tu fondo de emergencias
-                  </p>
-                  <p className="text-lg text-black md:text-xl">
-                    Al vincularte, comienzas a construir tu fondo de emergencias, un lugar donde tu dinero crece sin riesgos y te brinda tranquilidad cuando más lo necesitas.
+                <div className="max-w-2xl mx-auto">
+                  <p className="text-lg text-muted-foreground md:text-xl leading-relaxed">
+                    El FIC Skandia Efectivo es un fondo de inversión colectiva administrado por Skandia Fiduciaria S.A., diseñado para que tu dinero crezca con seguridad y siempre esté disponible.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Historia del producto - Card destacada */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-3xl blur-xl"></div>
-              
-            </div>
 
             {/* Beneficios principales */}
             <div className="space-y-8">
-              <h3 className="text-2xl font-bold text-center md:text-2xl">💡 Lo que hace especial tu fondo</h3>
+              <h3 className="text-2xl font-bold text-center md:text-2xl">💡 Lo que lo hace especial</h3>
               
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
                 {/* Beneficio 1 */}
-                <div className="group bg-card rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-border hover:border-primary/30">
-                  <div className="space-y-4">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <span className="text-3xl">🛡️</span>
+                <div className="bg-card rounded-2xl shadow-md p-6 border border-border">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl">🛡️</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2">Tu tranquilidad garantizada</h4>
+                      <h4 className="font-bold text-base mb-1">Bajo riesgo</h4>
                       <p className="text-muted-foreground text-sm leading-relaxed">
-                        Invierte en un fondo de bajo riesgo que protege tu dinero.
+                        Invierte en instrumentos de renta fija de corto plazo.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Beneficio 2 */}
-                <div className="group bg-card rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-border hover:border-primary/30">
-                  <div className="space-y-4">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <span className="text-3xl">💰</span>
+                <div className="bg-card rounded-2xl shadow-md p-6 border border-border">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl">💰</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2">Tu dinero siempre disponible</h4>
+                      <h4 className="font-bold text-base mb-1">Disponibilidad inmediata</h4>
                       <p className="text-muted-foreground text-sm leading-relaxed">
-                        Accede a él fácilmente cuando lo necesites.
+                        Accede a tu dinero cuando lo necesites.*
                       </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Beneficio 3 */}
-                <div className="group bg-card rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-border hover:border-primary/30">
-                  <div className="space-y-4">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <span className="text-3xl">📈</span>
+                <div className="bg-card rounded-2xl shadow-md p-6 border border-border">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl">👥</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2">Crecimiento constante</h4>
+                      <h4 className="font-bold text-base mb-1">Gestión experta</h4>
                       <p className="text-muted-foreground text-sm leading-relaxed">
-                        Tu regalo genera rendimientos mientras te da seguridad.
+                        Un equipo profesional gestiona tu inversión.
                       </p>
                     </div>
                   </div>
                 </div>
 
                 {/* Beneficio 4 */}
-                <div className="group bg-card rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-border hover:border-primary/30">
-                  <div className="space-y-4">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <span className="text-3xl">👥</span>
+                <div className="bg-card rounded-2xl shadow-md p-6 border border-border">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-2xl">📱</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2">Gestión experta</h4>
+                      <h4 className="font-bold text-base mb-1">100% digital</h4>
                       <p className="text-muted-foreground text-sm leading-relaxed">
-                        Un equipo de Skandia se encarga de hacer crecer tu inversión.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Beneficio 5 - ocupa 2 columnas en desktop */}
-                <div className="group bg-card rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-border hover:border-primary/30 sm:col-span-2 lg:col-span-1">
-                  <div className="space-y-4">
-                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <span className="text-3xl">📱</span>
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-2">100% digital</h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        Actívalo y adminístralo desde cualquier lugar, sin complicaciones.
+                        Administra tu fondo fácilmente desde cualquier lugar.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
+
+              {/* CTA text */}
+              <p className="text-center text-lg font-semibold text-primary">
+                Comienza hoy a construir tu tranquilidad financiera.
+              </p>
             </div>
 
             {/* CTA Section */}
@@ -509,7 +493,15 @@ const ActivateGift = () => {
                 termsAccepted: checked as boolean
               }))} className="mt-1 flex-shrink-0" />
                   <Label htmlFor="termsAccepted" className="font-normal text-base cursor-pointer leading-relaxed">
-                    Acepto y reconozco que he leído los Términos y Condiciones de la vinculación al FIC Efectivo.
+                    Acepto y reconozco que he leído los{" "}
+                    <a 
+                      href="/path-to-your-pdf.pdf" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline font-semibold"
+                    >
+                      Términos y Condiciones del FIC Efectivo
+                    </a>.
                   </Label>
                 </div>
 
