@@ -377,7 +377,7 @@ const ActivateGift = () => {
                 <div className="space-y-6 text-center max-w-3xl mx-auto">
                   
                   <p className="text-lg md:text-xl leading-relaxed">
-                    Al activar el tuyo, estarás abriendo tu <span className="font-semibold text-primary">fondo de emergencias</span>, un espacio donde tu dinero crece sin riesgos y te respalda ante cualquier imprevisto.
+                    Al vincularte, comienzas a construir tu <span className="font-semibold text-primary">fondo de emergencias</span>, un lugar donde tu dinero crece sin riesgos y te brinda tranquilidad cuando más lo necesitas.
                   </p>
                   <div className="pt-4">
                     <p className="text-xl md:text-2xl font-bold text-primary">
