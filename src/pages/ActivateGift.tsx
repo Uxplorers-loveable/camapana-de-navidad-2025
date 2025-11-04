@@ -428,119 +428,144 @@ const ActivateGift = () => {
         )}
 
         {step === "benefits" && (
-          <div className="space-y-8 animate-fade-in">
-            {/* Stepper */}
-            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 mb-8">
-              <SmartGiftStepper currentStep={0} />
+          <div className="space-y-12 animate-fade-in max-w-5xl mx-auto">
+            {/* Hero Section */}
+            <div className="text-center space-y-6 pt-8">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-4">
+                <span className="text-4xl">🎯</span>
+              </div>
+              
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+                  Lo que podrás lograr con tu<br />Smart Gift
+                </h2>
+                
+                <div className="max-w-2xl mx-auto space-y-3">
+                  <p className="text-2xl md:text-3xl font-semibold text-primary">
+                    Tu regalo se convierte en tu fondo de emergencias 🌱
+                  </p>
+                  <p className="text-lg md:text-xl text-muted-foreground">
+                    Una inversión simple, segura y digital para que tu dinero esté listo cuando lo necesites.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                🎯 Lo que podrás lograr con tu Smart Gift
-              </h2>
-              <p className="text-2xl text-muted-foreground mb-2 font-semibold">
-                Tu regalo se convierte en tu fondo de emergencias 🌱
-              </p>
-              <p className="text-lg text-muted-foreground">
-                Una inversión simple, segura y digital para que tu dinero esté listo cuando lo necesites.
-              </p>
-            </div>
-
-            {/* Historia del producto */}
-            <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 md:p-10 max-w-3xl mx-auto">
-              <div className="space-y-4 text-center">
-                <p className="text-lg leading-relaxed">
-                  Papá Noel y Skandia crearon los Smart Gifts para regalar tranquilidad.
-                </p>
-                <p className="text-lg leading-relaxed">
-                  Al activar el tuyo, estarás abriendo tu fondo de emergencias, un espacio donde tu dinero crece sin riesgos y te respalda ante cualquier imprevisto.
-                </p>
-                <p className="text-xl font-semibold text-primary mt-6">
-                  🌟 Tu regalo no se guarda, se invierte en tu bienestar financiero.
-                </p>
+            {/* Historia del producto - Card destacada */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-3xl blur-xl"></div>
+              <div className="relative bg-card rounded-3xl shadow-xl border border-primary/20 p-8 md:p-12">
+                <div className="space-y-6 text-center max-w-3xl mx-auto">
+                  <p className="text-lg md:text-xl leading-relaxed">
+                    <span className="font-semibold">Papá Noel y Skandia</span> crearon los Smart Gifts para regalar tranquilidad.
+                  </p>
+                  <p className="text-lg md:text-xl leading-relaxed">
+                    Al activar el tuyo, estarás abriendo tu <span className="font-semibold text-primary">fondo de emergencias</span>, un espacio donde tu dinero crece sin riesgos y te respalda ante cualquier imprevisto.
+                  </p>
+                  <div className="pt-4">
+                    <p className="text-xl md:text-2xl font-bold text-primary">
+                      🌟 Tu regalo no se guarda, se invierte en tu bienestar financiero
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Beneficios principales */}
-            <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-center mb-8">
+            <div className="space-y-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-center">
                 💡 Lo que hace especial tu Smart Gift
               </h3>
               
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-card rounded-xl shadow-[var(--shadow-card)] p-6 hover:shadow-xl transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">🛡️</span>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* Beneficio 1 */}
+                <div className="group bg-card rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-border hover:border-primary/30">
+                  <div className="space-y-4">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <span className="text-3xl">🛡️</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2">1️⃣ Tu tranquilidad garantizada</h4>
-                      <p className="text-muted-foreground">Invierte en un fondo de bajo riesgo que protege tu dinero.</p>
+                      <h4 className="font-bold text-lg mb-2">Tu tranquilidad garantizada</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Invierte en un fondo de bajo riesgo que protege tu dinero.
+                      </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card rounded-xl shadow-[var(--shadow-card)] p-6 hover:shadow-xl transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">💰</span>
+                {/* Beneficio 2 */}
+                <div className="group bg-card rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-border hover:border-primary/30">
+                  <div className="space-y-4">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <span className="text-3xl">💰</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2">2️⃣ Tu dinero siempre disponible</h4>
-                      <p className="text-muted-foreground">Accede a él fácilmente cuando lo necesites.</p>
+                      <h4 className="font-bold text-lg mb-2">Tu dinero siempre disponible</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Accede a él fácilmente cuando lo necesites.
+                      </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card rounded-xl shadow-[var(--shadow-card)] p-6 hover:shadow-xl transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">📈</span>
+                {/* Beneficio 3 */}
+                <div className="group bg-card rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-border hover:border-primary/30">
+                  <div className="space-y-4">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <span className="text-3xl">📈</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2">3️⃣ Crecimiento constante</h4>
-                      <p className="text-muted-foreground">Tu regalo genera rendimientos mientras te da seguridad.</p>
+                      <h4 className="font-bold text-lg mb-2">Crecimiento constante</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Tu regalo genera rendimientos mientras te da seguridad.
+                      </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card rounded-xl shadow-[var(--shadow-card)] p-6 hover:shadow-xl transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">👥</span>
+                {/* Beneficio 4 */}
+                <div className="group bg-card rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-border hover:border-primary/30">
+                  <div className="space-y-4">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <span className="text-3xl">👥</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2">4️⃣ Gestión experta</h4>
-                      <p className="text-muted-foreground">Un equipo de Skandia se encarga de hacer crecer tu inversión.</p>
+                      <h4 className="font-bold text-lg mb-2">Gestión experta</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Un equipo de Skandia se encarga de hacer crecer tu inversión.
+                      </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card rounded-xl shadow-[var(--shadow-card)] p-6 hover:shadow-xl transition-all duration-300 md:col-span-2">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-2xl">📱</span>
+                {/* Beneficio 5 - ocupa 2 columnas en desktop */}
+                <div className="group bg-card rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-border hover:border-primary/30 sm:col-span-2 lg:col-span-1">
+                  <div className="space-y-4">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <span className="text-3xl">📱</span>
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2">5️⃣ 100% digital</h4>
-                      <p className="text-muted-foreground">Actívalo y adminístralo desde cualquier lugar, sin complicaciones.</p>
+                      <h4 className="font-bold text-lg mb-2">100% digital</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Actívalo y adminístralo desde cualquier lugar, sin complicaciones.
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* CTA */}
-            <div className="text-center space-y-4 max-w-2xl mx-auto">
+            {/* CTA Section */}
+            <div className="text-center space-y-4 py-8">
               <Button 
                 size="lg"
                 variant="skandia"
                 onClick={() => setStep("success")}
-                className="text-lg px-12 h-14"
+                className="text-lg px-12 h-14 shadow-lg hover:shadow-xl"
               >
                 Iniciar vinculación a mi fondo
               </Button>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground max-w-md mx-auto">
                 Empieza hoy tu fondo de emergencias y convierte tu regalo en tranquilidad financiera.
               </p>
             </div>
