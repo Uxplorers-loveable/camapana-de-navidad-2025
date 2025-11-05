@@ -480,7 +480,7 @@ const ActivateGift = () => {
               {/* CTA text */}
               <p className="text-center text-lg">
                 <a 
-                  href="https://skandiacol-my.sharepoint.com/:b:/g/personal/egmoreno_skandia_com_co/ESEZwUcTjh5Bs7rMflN-e2kBLD9gbMmMeqgzPW1H8_V0Yw?e=nKuJdo" 
+                  href="/path-to-your-pdf.pdf" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-primary hover:underline font-semibold"
