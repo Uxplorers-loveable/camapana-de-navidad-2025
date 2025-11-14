@@ -9,7 +9,6 @@ import { toast } from "sonner";
 import { ArrowLeft, ArrowRight, Check, Printer } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { QRCodeSVG } from "qrcode.react";
-
 const CreateGift = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(-1); // -1 = info screen, 0+ = form steps
@@ -22,36 +21,33 @@ const CreateGift = () => {
     amount: "",
     message: "",
     from: "",
-    to: "",
+    to: ""
   });
   const [shareableLink, setShareableLink] = useState("");
-
   const updateFormData = (field: string, value: any) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
-
   const formatAmount = (value: string) => {
     const numbers = value.replace(/[^\d]/g, '');
     if (!numbers) return '';
     const number = parseInt(numbers);
     return number.toLocaleString('es-CO');
   };
-
   const handleAmountChange = (value: string) => {
     const formatted = formatAmount(value);
     updateFormData("amount", formatted);
   };
-
   const nextStep = () => {
     if (validateCurrentStep()) {
       setCurrentStep(prev => prev + 1);
     }
   };
-
   const prevStep = () => {
     setCurrentStep(prev => prev - 1);
   };
-
   const validateCurrentStep = () => {
     switch (currentStep) {
       case 0:
@@ -75,27 +71,24 @@ const CreateGift = () => {
     }
     return true;
   };
-
   const handleSubmit = () => {
     // Generate shareable link (in a real app, this would be an API call)
     const giftId = Math.random().toString(36).substring(2, 15);
-    
+
     // Store gift data in localStorage
     const giftData = {
       from: formData.from,
       to: formData.to,
       amount: formData.amount,
       message: formData.message,
-      template: formData.template,
+      template: formData.template
     };
-    
     console.log('Saving gift data with ID:', giftId, giftData);
     localStorage.setItem(`gift_${giftId}`, JSON.stringify(giftData));
-    
+
     // Verify it was saved
     const saved = localStorage.getItem(`gift_${giftId}`);
     console.log('Verified saved data:', saved);
-    
     const link = `${window.location.origin}/activar?gift=${giftId}`;
     console.log('Generated link:', link);
     setShareableLink(link);
@@ -104,14 +97,9 @@ const CreateGift = () => {
 
   // Info screen before starting
   if (currentStep === -1) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
+    return <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
         <div className="container mx-auto px-4 max-w-4xl">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/")}
-            className="mb-6"
-          >
+          <Button variant="ghost" onClick={() => navigate("/")} className="mb-6">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Volver
           </Button>
@@ -127,13 +115,23 @@ const CreateGift = () => {
 
           <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 md:p-12 mb-8 animate-fade-in">
             <div className="space-y-8">
-              {[
-                { num: "1", title: "Crea tu Smart Gift personalizado", desc: "Elige el diseño, monto y mensaje perfecto" },
-                { num: "2", title: "La persona que la reciba podrá activarla en 30 días", desc: "Tu destinatario tendrá tiempo para activar su regalo" },
-                { num: "3", title: "Abre su producto de inversión", desc: "Su regalo se transforma en una inversión y le brinda tranquilidad para el futuro." },
-                { num: "4", title: "Te notificaremos para que realices el pago", desc: "Cuando el destinatario active su inversión, recibirás las instrucciones para hacer el pago." }
-              ].map((step, index) => (
-                <div key={index} className="flex gap-4 items-start">
+              {[{
+              num: "1",
+              title: "Crea tu Smart Gift personalizado",
+              desc: "Elige el diseño, monto y mensaje perfecto"
+            }, {
+              num: "2",
+              title: "La persona que la reciba podrá activarla en 30 días",
+              desc: "Tu destinatario tendrá tiempo para activar su regalo"
+            }, {
+              num: "3",
+              title: "Abre su producto de inversión",
+              desc: "Su regalo se transforma en una inversión y le brinda tranquilidad para el futuro."
+            }, {
+              num: "4",
+              title: "Te notificaremos para que realices el pago",
+              desc: "Cuando el destinatario active su inversión, recibirás las instrucciones para hacer el pago."
+            }].map((step, index) => <div key={index} className="flex gap-4 items-start">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
                     {step.num}
                   </div>
@@ -141,30 +139,23 @@ const CreateGift = () => {
                     <h3 className="font-bold text-lg mb-1">{step.title}</h3>
                     <p className="text-muted-foreground">{step.desc}</p>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
 
           <div className="text-center">
-            <Button 
-              size="lg"
-              variant="skandia"
-              onClick={() => setCurrentStep(0)}
-            >
+            <Button size="lg" variant="skandia" onClick={() => setCurrentStep(0)}>
               Empezar mi regalo
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 
   // Final success screen
   if (currentStep === 4) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
+    return <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
         <div className="container mx-auto px-4 max-w-3xl">
           <div className="text-center mb-8 animate-fade-in">
             <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
@@ -173,9 +164,7 @@ const CreateGift = () => {
             <h1 className="text-3xl md:text-5xl font-bold mb-4">
               ¡Tu Smart Gift está listo!
             </h1>
-            <p className="text-lg text-muted-foreground">
-              Comparte el link cuando quieras y por donde quieras
-            </p>
+            
           </div>
 
           <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 md:p-12 mb-8 space-y-6 animate-fade-in">
@@ -185,21 +174,11 @@ const CreateGift = () => {
                   Escanea el código QR para activar tu Smart Gift
                 </Label>
                 <div className="bg-white p-6 rounded-lg shadow-lg">
-                  <QRCodeSVG 
-                    value={shareableLink}
-                    size={256}
-                    level="H"
-                    includeMargin={true}
-                  />
+                  <QRCodeSVG value={shareableLink} size={256} level="H" includeMargin={true} />
                 </div>
-                <Button
-                  variant="skandia"
-                  size="lg"
-                  className="mt-6"
-                  onClick={() => {
-                    window.print();
-                  }}
-                >
+                <Button variant="skandia" size="lg" className="mt-6" onClick={() => {
+                window.print();
+              }}>
                   <Printer className="mr-2 h-5 w-5" />
                   Imprimir
                 </Button>
@@ -223,37 +202,31 @@ const CreateGift = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg"
-              variant="outline"
-              onClick={() => {
-                setCurrentStep(-1);
-                setShareableLink("");
-                setFormData({
-                  name: "",
-                  email: "",
-                  phone: "",
-                  dataConsent: false,
-                  template: 1 as 1 | 2 | 3,
-                  amount: "",
-                  message: "",
-                  from: "",
-                  to: "",
-                });
-              }}
-            >
+            <Button size="lg" variant="outline" onClick={() => {
+            setCurrentStep(-1);
+            setShareableLink("");
+            setFormData({
+              name: "",
+              email: "",
+              phone: "",
+              dataConsent: false,
+              template: 1 as 1 | 2 | 3,
+              amount: "",
+              message: "",
+              from: "",
+              to: ""
+            });
+          }}>
               Crear otro Smart Gift
             </Button>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
 
   // Confirmation screen
   if (currentStep === 3) {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
+    return <div className="min-h-screen bg-gradient-to-b from-background to-[hsl(182,25%,96%)] py-8">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">
@@ -278,23 +251,17 @@ const CreateGift = () => {
                 <span className="text-muted-foreground">Monto:</span>
                 <span className="font-medium text-lg">${formData.amount}</span>
               </div>
-              {formData.message && (
-                <div className="py-2">
+              {formData.message && <div className="py-2">
                   <span className="text-muted-foreground block mb-1">Mensaje:</span>
                   <p className="text-foreground italic">"{formData.message}"</p>
-                </div>
-              )}
+                </div>}
 
               <div className="flex gap-4 pt-6">
                 <Button variant="outline" onClick={prevStep} className="flex-1">
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Anterior
                 </Button>
-                <Button 
-                  onClick={handleSubmit} 
-                  variant="skandia"
-                  className="flex-1"
-                >
+                <Button onClick={handleSubmit} variant="skandia" className="flex-1">
                   <Check className="mr-2 h-4 w-4" />
                   Crear Smart Gift
                 </Button>
@@ -304,30 +271,16 @@ const CreateGift = () => {
             <div className="sticky top-8">
               <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8">
                 <h3 className="text-lg font-semibold mb-4 text-center">Vista previa</h3>
-                <GiftCard
-                  template={formData.template}
-                  amount={formData.amount}
-                  message={formData.message}
-                  from={formData.from}
-                  to={formData.to}
-                  className="mx-auto"
-                />
+                <GiftCard template={formData.template} amount={formData.amount} message={formData.message} from={formData.from} to={formData.to} className="mx-auto" />
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="min-h-screen bg-background py-8">
+  return <div className="min-h-screen bg-background py-8">
       <div className="container mx-auto px-4 max-w-6xl">
-        <Button
-          variant="ghost"
-          onClick={() => currentStep === 0 ? setCurrentStep(-1) : prevStep()}
-          className="mb-6"
-        >
+        <Button variant="ghost" onClick={() => currentStep === 0 ? setCurrentStep(-1) : prevStep()} className="mb-6">
           <ArrowLeft className="mr-2 h-4 w-4" />
           {currentStep === 0 ? "Volver" : "Anterior"}
         </Button>
@@ -335,8 +288,7 @@ const CreateGift = () => {
         <div className="grid md:grid-cols-2 gap-8 items-start">
           {/* Form Section */}
           <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8">
-            {currentStep === 0 && (
-              <div className="space-y-6 animate-fade-in">
+            {currentStep === 0 && <div className="space-y-6 animate-fade-in">
                 <div>
                   <h2 className="text-2xl font-bold mb-2">Tus datos</h2>
                   <p className="text-muted-foreground">
@@ -346,50 +298,26 @@ const CreateGift = () => {
                 <div className="space-y-4">
                   <div>
                     <Label htmlFor="name">Nombre completo</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      placeholder="Tu nombre completo"
-                      value={formData.name}
-                      onChange={(e) => updateFormData("name", e.target.value)}
-                    />
+                    <Input id="name" type="text" placeholder="Tu nombre completo" value={formData.name} onChange={e => updateFormData("name", e.target.value)} />
                   </div>
                   <div>
                     <Label htmlFor="email">Correo electrónico</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="tu@email.com"
-                      value={formData.email}
-                      onChange={(e) => updateFormData("email", e.target.value)}
-                    />
+                    <Input id="email" type="email" placeholder="tu@email.com" value={formData.email} onChange={e => updateFormData("email", e.target.value)} />
                   </div>
                   <div>
                     <Label htmlFor="phone">Teléfono</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="+57 300 123 4567"
-                      value={formData.phone}
-                      onChange={(e) => updateFormData("phone", e.target.value)}
-                    />
+                    <Input id="phone" type="tel" placeholder="+57 300 123 4567" value={formData.phone} onChange={e => updateFormData("phone", e.target.value)} />
                   </div>
                   <div className="flex items-start gap-3 pt-2">
-                    <Checkbox 
-                      id="dataConsent"
-                      checked={formData.dataConsent}
-                      onCheckedChange={(checked) => updateFormData("dataConsent", checked)}
-                    />
+                    <Checkbox id="dataConsent" checked={formData.dataConsent} onCheckedChange={checked => updateFormData("dataConsent", checked)} />
                     <label htmlFor="dataConsent" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
                       Autorizo el uso de mis datos para la creación y envío de mi Smart Gift conforme a la política de privacidad.
                     </label>
                   </div>
                 </div>
-              </div>
-            )}
+              </div>}
 
-            {currentStep === 1 && (
-              <div className="space-y-6 animate-fade-in">
+            {currentStep === 1 && <div className="space-y-6 animate-fade-in">
                 <div>
                   <h2 className="text-2xl font-bold mb-2">Monto del regalo</h2>
                   <p className="text-muted-foreground">
@@ -399,30 +327,16 @@ const CreateGift = () => {
                 <div className="space-y-4">
                   <div>
                     <Label htmlFor="amount">Monto del regalo (COP)</Label>
-                    <Input
-                      id="amount"
-                      type="text"
-                      placeholder="500.000,00"
-                      value={formData.amount}
-                      onChange={(e) => handleAmountChange(e.target.value)}
-                    />
+                    <Input id="amount" type="text" placeholder="500.000,00" value={formData.amount} onChange={e => handleAmountChange(e.target.value)} />
                   </div>
                   <div>
                     <Label htmlFor="message">Mensaje personalizado</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Escribe un mensaje especial..."
-                      value={formData.message}
-                      onChange={(e) => updateFormData("message", e.target.value)}
-                      rows={4}
-                    />
+                    <Textarea id="message" placeholder="Escribe un mensaje especial..." value={formData.message} onChange={e => updateFormData("message", e.target.value)} rows={4} />
                   </div>
                 </div>
-              </div>
-            )}
+              </div>}
 
-            {currentStep === 2 && (
-              <div className="space-y-6 animate-fade-in">
+            {currentStep === 2 && <div className="space-y-6 animate-fade-in">
                 <div>
                   <h2 className="text-2xl font-bold mb-2">Nombres</h2>
                   <p className="text-muted-foreground">
@@ -432,38 +346,21 @@ const CreateGift = () => {
                 <div className="space-y-4">
                   <div>
                     <Label htmlFor="from">De (tu nombre)</Label>
-                    <Input
-                      id="from"
-                      placeholder="Tu nombre"
-                      value={formData.from}
-                      onChange={(e) => updateFormData("from", e.target.value)}
-                    />
+                    <Input id="from" placeholder="Tu nombre" value={formData.from} onChange={e => updateFormData("from", e.target.value)} />
                   </div>
                   <div>
                     <Label htmlFor="to">Para (nombre del destinatario)</Label>
-                    <Input
-                      id="to"
-                      placeholder="Nombre del destinatario"
-                      value={formData.to}
-                      onChange={(e) => updateFormData("to", e.target.value)}
-                    />
+                    <Input id="to" placeholder="Nombre del destinatario" value={formData.to} onChange={e => updateFormData("to", e.target.value)} />
                   </div>
                 </div>
-              </div>
-            )}
+              </div>}
 
             <div className="flex gap-4 mt-8">
-              {currentStep > 0 && (
-                <Button variant="outline" onClick={prevStep} className="flex-1">
+              {currentStep > 0 && <Button variant="outline" onClick={prevStep} className="flex-1">
                   <ArrowLeft className="mr-2 h-4 w-4" />
                   Anterior
-                </Button>
-              )}
-              <Button 
-                onClick={nextStep} 
-                variant="skandia"
-                className="flex-1"
-              >
+                </Button>}
+              <Button onClick={nextStep} variant="skandia" className="flex-1">
                 Siguiente
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -474,20 +371,11 @@ const CreateGift = () => {
           <div className="sticky top-8">
             <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8">
               <h3 className="text-lg font-semibold mb-4 text-center">Vista previa</h3>
-              <GiftCard
-                template={formData.template}
-                amount={formData.amount}
-                message={formData.message}
-                from={formData.from}
-                to={formData.to}
-                className="mx-auto"
-              />
+              <GiftCard template={formData.template} amount={formData.amount} message={formData.message} from={formData.from} to={formData.to} className="mx-auto" />
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default CreateGift;
