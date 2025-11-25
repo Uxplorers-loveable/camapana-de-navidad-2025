@@ -26,14 +26,12 @@ const ActivateGift = () => {
   // Get gift ID from URL and retrieve gift data
   const searchParams = new URLSearchParams(location.search);
   const giftId = searchParams.get('gift');
-  
   console.log('Gift ID from URL:', giftId);
   console.log('Current URL:', location.search);
-  
+
   // Retrieve gift data from localStorage
   const storedData = giftId ? localStorage.getItem(`gift_${giftId}`) : null;
   console.log('Stored data:', storedData);
-  
   const giftData = storedData ? JSON.parse(storedData) : {
     template: 2 as 1 | 2 | 3,
     amount: "500.000",
@@ -41,7 +39,6 @@ const ActivateGift = () => {
     from: "Papá Noel",
     to: "María"
   };
-  
   console.log('Gift data being used:', giftData);
   const handleCodeSubmit = () => {
     if (!activationData.code) {
@@ -67,9 +64,7 @@ const ActivateGift = () => {
               <h1 className="text-4xl md:text-5xl font-bold">
                 Hola {giftData.to}, {giftData.from} te ha enviado un regalo
               </h1>
-              <p className="text-2xl font-semibold text-primary">
-                Una Smart Gift para impulsar tu futuro
-              </p>
+              <p className="text-2xl font-semibold text-primary">Un Smart Gift para impulsar tu futuro</p>
             </div>
 
             <div className="bg-card rounded-2xl shadow-[var(--shadow-card)] p-8 md:p-12 space-y-6 text-left">
@@ -479,12 +474,7 @@ const ActivateGift = () => {
 
               {/* CTA text */}
               <p className="text-center text-lg">
-                <a 
-                  href="/path-to-your-pdf.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline font-semibold"
-                >
+                <a href="/path-to-your-pdf.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
                   Consulta los Términos y Condiciones del FIC Efectivo
                 </a>
               </p>
@@ -501,12 +491,7 @@ const ActivateGift = () => {
               }))} className="mt-1 flex-shrink-0" />
                   <Label htmlFor="termsAccepted" className="font-normal text-base cursor-pointer leading-relaxed">
                     Acepto y reconozco que he leído los{" "}
-                    <a 
-                      href="/path-to-your-pdf.pdf" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline font-semibold"
-                    >
+                    <a href="/path-to-your-pdf.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">
                       Términos y Condiciones del FIC Efectivo
                     </a>.
                   </Label>
