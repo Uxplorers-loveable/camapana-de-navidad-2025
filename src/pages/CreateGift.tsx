@@ -122,7 +122,7 @@ const CreateGift = () => {
             }, {
               num: "2",
               title: "La persona que la reciba podrá activarla en 5 días",
-              desc: "Tu destinatario tendrá tiempo para activar su regalo"
+              desc: "Tendrá 5 días para activar su Smart Gift."
             }, {
               num: "3",
               title: "Abre su producto de inversión",
