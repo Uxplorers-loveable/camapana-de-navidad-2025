@@ -191,7 +191,7 @@ const CreateGift = () => {
                 </p>
                 <p className="flex items-start gap-3">
                   <span className="text-2xl">⏰</span>
-                  <span>Tendrá 30 días para activar su Smart Gift desde que reciba el código.</span>
+                  <span>Tendrá 5 días para activar su Smart Gift.</span>
                 </p>
                 <p className="flex items-start gap-3">
                   <span className="text-2xl">🔔</span>
