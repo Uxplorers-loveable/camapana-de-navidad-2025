@@ -121,7 +121,7 @@ const CreateGift = () => {
               desc: "Elige el monto y mensaje perfecto"
             }, {
               num: "2",
-              title: "La persona que la reciba podrá activarla en 30 días",
+              title: "La persona que la reciba podrá activarla en 5 días",
               desc: "Tu destinatario tendrá tiempo para activar su regalo"
             }, {
               num: "3",
